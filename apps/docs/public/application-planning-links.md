@@ -2,6 +2,7 @@
 
 - [Requirements Document](./requirements-doc.md)
 - [Site Map](./LMS%20Sitemap.png)
+- [Data Model Diagram](./Data%20Model%20Diagram.png)
 
 ### Wireframes
 
