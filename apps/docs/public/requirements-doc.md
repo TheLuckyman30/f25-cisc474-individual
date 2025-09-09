@@ -59,5 +59,4 @@ Communication
 - As a user, I want there to be a login and authentication system so that all of my preferences and data are saved and no one else can access my data
 
 # Unique Submission Type
-- As a professor, I want there to be a submission type where I can upload an image and ask questions about areas of the image. Students can then circle parts of the image that they think are the correct areas and will receive points based on what I set the correct areas to be. 
-- This is so that I can have more interactive submissions/quizzes. 
+- As a professor, I want there to be a submission type where I can upload an image and ask questions about areas of the image. Students can then circle parts of the image that they think are the correct areas and will receive points based on what I set the correct areas to be. This is so that I can have more interactive submissions/quizzes. 
