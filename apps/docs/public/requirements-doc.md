@@ -6,7 +6,7 @@
 
 ## Courses
 
-- As a student, I want to be able to see a list or a screen showing me all of the courses I am enrolled in so that I can quickly navigate to one of my courses 
+- As a student, I want to be able to see a list or a screen showing me all of the courses I am enrolled in so that I can quickly navigate to one of my courses
 
 ## Assignments
 
@@ -16,7 +16,7 @@
 ## Grades
 
 - As a student, I want to be able to see my grade for each course so that I can get a good sense on how I am doing in the course
-Communication
+  Communication
 - As a student, I want to be able to message my professors or other faculty, so that I have a way to reach out if I need help.
 
 # Professor User Stories
@@ -27,11 +27,13 @@ Communication
 - As a professor, I want there to be a way to customize and organize course information so that students can easily find all of the course material
 
 ## Assignments
+
 - As a professor, I want a way to create assignments so that I can give out work and my students know what to work on
 - As a professor, I want to modify assignments so that I can make necessary changes
 - As a professor, I want to be able to create quizzes so that I can test my students online.
 
 ## Grades
+
 - As a professor, I want there to be a grading system so that I can evaluate assignments within the app and my students can know how well they are doing.
 
 ## Communication
@@ -59,4 +61,5 @@ Communication
 - As a user, I want there to be a login and authentication system so that all of my preferences and data are saved and no one else can access my data
 
 # Unique Submission Type
-- As a professor, I want there to be a submission type where I can upload an image and ask questions about areas of the image. Students can then circle parts of the image that they think are the correct areas and will receive points based on what I set the correct areas to be. This is so that I can have more interactive submissions/quizzes. 
+
+- As a professor, I want there to be a submission type where I can upload an image and ask questions about areas of the image. Students can then circle parts of the image that they think are the correct areas and will receive points based on what I set the correct areas to be. This is so that I can have more interactive submissions/quizzes.
