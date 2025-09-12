@@ -14,13 +14,13 @@ function NavBar() {
 
   return (
     <div className="flex justify-center">
-      <div className="fixed flex gap-5 p-2 bg-blue-500 text-white font-bold rounded-md">
+      <div className="fixed flex gap-5 p-2 border border-blue-400 font-bold rounded-md">
         {NAV_LINKS.map((link, index) => (
           <Link
             href={`/home/${link.toLowerCase()}`}
             key={index}
             onClick={() => setNewPage(index)}
-            className={`p-1 ${index === currentPage ? 'rounded-md bg-blue-400' : ''}`}
+            className={`p-1 hover:-translate-y-1 duration-200 rounded-md ${index === currentPage ? ' bg-blue-300' : ''}`}
           >
             {link}
           </Link>
