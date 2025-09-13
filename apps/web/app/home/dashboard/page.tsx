@@ -1,7 +1,7 @@
 'use client';
 
 import CourseCard from './components/course-card';
-import { courses, assignments } from '../../temp-data/temp-data.json';
+import { courses } from '../../temp-data/temp-data.json';
 import {
   FormControl,
   InputLabel,

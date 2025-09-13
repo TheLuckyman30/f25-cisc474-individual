@@ -7,8 +7,13 @@ interface CourseCardProps {
 
 function CourseCard({ course }: CourseCardProps) {
   return (
-    <div className="min-h-100 border border-red-400 p-5 rounded-md shadow-2xl hover:-translate-y-5 duration-200">
-      <Link href={`/home/${course.id}`}>{course.name}</Link>
+    <div className="min-h-100 border border-red-400 p-5 rounded-md shadow-2xl">
+      <Link
+        href={`/courses/${course.id}/course-home`}
+        className="border border-black p-1 rounded-md"
+      >
+        {course.name}
+      </Link>
     </div>
   );
 }
