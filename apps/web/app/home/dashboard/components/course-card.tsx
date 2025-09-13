@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Course } from '../../../temp-data/temp-interfaces';
 
 interface CourseCardProps {
@@ -7,7 +8,7 @@ interface CourseCardProps {
 function CourseCard({ course }: CourseCardProps) {
   return (
     <div className="min-h-100 border border-red-400 p-5 rounded-md shadow-2xl hover:-translate-y-5 duration-200">
-      <div>{course.name}</div>
+      <Link href={`/home/${course.id}`}>{course.name}</Link>
     </div>
   );
 }

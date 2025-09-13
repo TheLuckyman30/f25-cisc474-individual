@@ -29,9 +29,8 @@ function Dashboard() {
               <MenuItem value={'Assignments'}>Assignments</MenuItem>
             </Select>
           </FormControl>
-          <div>Dropdown</div>
         </div>
-        <div className="grid grid-cols-5 gap-15">
+        <div className="grid grid-cols-5 gap-10">
           {displayedInfo === 'Courses' &&
             courses.map((course, index) => (
               <CourseCard course={course} key={index} />
