@@ -10,6 +10,7 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import { useState } from 'react';
+import Link from 'next/link';
 
 function Dashboard() {
   const [displayedInfo, setDisplayedInfo] = useState<string>('Courses');
@@ -20,13 +21,18 @@ function Dashboard() {
 
   return (
     <div className="flex justify-center items-center h-lvh w-lvw">
+      <Link
+        href="/"
+        className="absolute top-0 left-0 m-5 p-1 border rounded-md hover:-translate-y-2 duration-200"
+      >
+        Welcome Page
+      </Link>
       <div className="grid grid-rows-1 gap-25 w-fit">
         <div className="flex justify-between">
           <FormControl>
             <InputLabel>Select Info</InputLabel>
             <Select value={displayedInfo} onChange={handleDisplayInfoChange}>
               <MenuItem value={'Courses'}>Courses</MenuItem>
-              <MenuItem value={'Assignments'}>Assignments</MenuItem>
             </Select>
           </FormControl>
         </div>
