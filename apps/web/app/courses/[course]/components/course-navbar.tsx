@@ -1,18 +1,21 @@
 'use client';
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { useState } from 'react';
 
 function CourseNavBar() {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const { course } = useParams();
+  const courseId = course?.toString();
 
   const COURSE_NAV_LINKS = [
     { name: 'Dashboard', link: '/home/dashboard' },
-    { name: 'Home', link: `course-home` },
-    { name: 'Assignments', link: `assignments` },
-    { name: 'Files', link: `files` },
-    { name: 'Media', link: `media` },
-    { name: 'Grade', link: `grade` },
+    { name: 'Home', link: `/courses/${courseId}/course-home` },
+    { name: 'Assignments', link: `/courses/${courseId}/assignments` },
+    { name: 'Files', link: `/courses/${courseId}/files` },
+    { name: 'Media', link: `/courses/${courseId}/media` },
+    { name: 'Grade', link: `/courses/${courseId}/grade` },
   ];
 
   function setNewPage(index: number) {
