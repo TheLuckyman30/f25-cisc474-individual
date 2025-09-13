@@ -1,0 +1,22 @@
+import { Assignment } from '../../../../temp-data/temp-interfaces';
+import { assignments } from '../../../../temp-data/temp-data.json';
+
+interface AssignmentCardProps {
+  assignmentId: string;
+}
+
+function AssignmentCard({ assignmentId }: AssignmentCardProps) {
+  const assignment: Assignment | undefined = assignments.find(
+    (a) => a.id === assignmentId,
+  );
+  if (assignment) {
+    return (
+      <div className="border border-red-500 p-2 rounded-md">
+        <div>{`Assignment Name: ${assignment.name}`}</div>
+        <div>{`Content: ${assignment.description}`}</div>
+      </div>
+    );
+  }
+}
+
+export default AssignmentCard;
