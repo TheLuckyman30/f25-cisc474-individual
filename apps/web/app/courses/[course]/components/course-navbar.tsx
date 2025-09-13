@@ -9,6 +9,10 @@ function CourseNavBar() {
   const COURSE_NAV_LINKS = [
     { name: 'Dashboard', link: '/home/dashboard' },
     { name: 'Home', link: `course-home` },
+    { name: 'Assignments', link: `assignments` },
+    { name: 'Files', link: `files` },
+    { name: 'Media', link: `media` },
+    { name: 'Grade', link: `grade` },
   ];
 
   function setNewPage(index: number) {
