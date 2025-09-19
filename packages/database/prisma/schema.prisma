@@ -42,6 +42,7 @@ model Enrollment {
   course   Course @relation(fields: [courseId], references: [id])
   courseId String
   userId   String
+  role     Role
 }
 
 model Assignment {
@@ -50,8 +51,6 @@ model Assignment {
   courseId      String
   dueDate       DateTime
   openUntilDate DateTime
-  title         String
-  description   String
   isOpen        Boolean
   submissions   Submission[]
 }
@@ -74,4 +73,11 @@ model Grade {
   submission   Submission @relation(fields: [submissionId], references: [id])
   submissionId String
   numberGrade  Float
+}
+
+enum Role {
+  STUDENT
+  INSTRUCTOR
+  TA
+  ADMIN
 }
