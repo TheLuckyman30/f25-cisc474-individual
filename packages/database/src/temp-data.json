@@ -1,57 +1,123 @@
 {
   "users": [
-    { "id": 1, "name": "Alice Johnson", "email": "alice.johnson@example.com" },
-    { "id": 2, "name": "Bob Smith", "email": "bob.smith@example.com" }
+    {"id": 1, "name": "Alice Johnson", "email": "alice.johnson@example.com"},
+    {"id": 2, "name": "Bob Smith", "email": "bob.smith@example.com"},
+    {"id": 3, "name": "Charlie Brown", "email": "charlie.brown@example.com"},
+    {"id": 4, "name": "Diana Evans", "email": "diana.evans@example.com"},
+    {"id": 5, "name": "Ethan White", "email": "ethan.white@example.com"},
+    {"id": 6, "name": "Fiona Green", "email": "fiona.green@example.com"},
+    {"id": 7, "name": "George Adams", "email": "george.adams@example.com"},
+    {"id": 8, "name": "Hannah Baker", "email": "hannah.baker@example.com"},
+    {"id": 9, "name": "Ian Clark", "email": "ian.clark@example.com"},
+    {"id": 10, "name": "Julia Davis", "email": "julia.davis@example.com"},
+    {"id": 11, "name": "Kevin Harris", "email": "kevin.harris@example.com"},
+    {"id": 12, "name": "Laura Martin", "email": "laura.martin@example.com"},
+    {"id": 13, "name": "Michael Lee", "email": "michael.lee@example.com"},
+    {"id": 14, "name": "Nina Scott", "email": "nina.scott@example.com"},
+    {"id": 15, "name": "Oscar Turner", "email": "oscar.turner@example.com"},
+    {"id": 16, "name": "Paula Walker", "email": "paula.walker@example.com"},
+    {"id": 17, "name": "Quentin Young", "email": "quentin.young@example.com"},
+    {"id": 18, "name": "Rachel King", "email": "rachel.king@example.com"},
+    {"id": 19, "name": "Steven Allen", "email": "steven.allen@example.com"},
+    {"id": 20, "name": "Tina Moore", "email": "tina.moore@example.com"}
   ],
   "courses": [
-    {
-      "id": 1,
-      "name": "Introduction to Computer Science",
-      "description": "Learn programming basics and problem solving.",
-      "assignments": [
-        {
-          "id": 1,
-          "title": "Hello World Program",
-          "description": "Write your first program",
-          "dueDate": "2025-09-30T23:59:59.000Z"
-        },
-        {
-          "id": 2,
-          "title": "Basic Algorithms",
-          "description": "Implement sorting algorithms",
-          "dueDate": "2025-10-10T23:59:59.000Z"
-        }
-      ]
-    }
+    {"id": 1, "name": "Introduction to Programming", "description": "Learn the basics of programming."},
+    {"id": 2, "name": "Web Development Fundamentals", "description": "HTML, CSS, JavaScript basics."},
+    {"id": 3, "name": "Database Systems", "description": "Introduction to relational databases and SQL."},
+    {"id": 4, "name": "Data Structures & Algorithms", "description": "Core computer science concepts."},
+    {"id": 5, "name": "Software Engineering Principles", "description": "Software development lifecycle and best practices."}
+  ],
+  "assignments": [
+    {"id": 1, "courseId": 1, "title": "Variables and Data Types", "description": "Practice basic variables.", "dueDate": "2025-10-01T23:59:00.000Z", "openUntilDate": "2025-10-03T23:59:00.000Z", "isOpen": true},
+    {"id": 2, "courseId": 1, "title": "Control Flow", "description": "If statements and loops.", "dueDate": "2025-10-05T23:59:00.000Z", "openUntilDate": "2025-10-07T23:59:00.000Z", "isOpen": true},
+    {"id": 3, "courseId": 1, "title": "Functions", "description": "Defining and calling functions.", "dueDate": "2025-10-09T23:59:00.000Z", "openUntilDate": "2025-10-11T23:59:00.000Z", "isOpen": true},
+    {"id": 4, "courseId": 1, "title": "Arrays", "description": "Working with arrays.", "dueDate": "2025-10-13T23:59:00.000Z", "openUntilDate": "2025-10-15T23:59:00.000Z", "isOpen": true},
+    {"id": 5, "courseId": 1, "title": "Objects", "description": "Understanding objects.", "dueDate": "2025-10-17T23:59:00.000Z", "openUntilDate": "2025-10-19T23:59:00.000Z", "isOpen": true},
+    {"id": 6, "courseId": 1, "title": "Loops and Iteration", "description": "For and while loops.", "dueDate": "2025-10-21T23:59:00.000Z", "openUntilDate": "2025-10-23T23:59:00.000Z", "isOpen": true},
+    {"id": 7, "courseId": 1, "title": "Recursion", "description": "Recursive functions.", "dueDate": "2025-10-25T23:59:00.000Z", "openUntilDate": "2025-10-27T23:59:00.000Z", "isOpen": true},
+    {"id": 8, "courseId": 1, "title": "Debugging", "description": "Debugging your code.", "dueDate": "2025-10-29T23:59:00.000Z", "openUntilDate": "2025-10-31T23:59:00.000Z", "isOpen": true},
+    {"id": 9, "courseId": 1, "title": "Project Setup", "description": "Create a small project.", "dueDate": "2025-11-02T23:59:00.000Z", "openUntilDate": "2025-11-04T23:59:00.000Z", "isOpen": true},
+    {"id": 10, "courseId": 1, "title": "Final Assignment", "description": "Complete a full program.", "dueDate": "2025-11-06T23:59:00.000Z", "openUntilDate": "2025-11-08T23:59:00.000Z", "isOpen": true},
+
+    {"id": 11, "courseId": 2, "title": "HTML Basics", "description": "Introduction to HTML.", "dueDate": "2025-10-01T23:59:00.000Z", "openUntilDate": "2025-10-03T23:59:00.000Z", "isOpen": true},
+    {"id": 12, "courseId": 2, "title": "CSS Fundamentals", "description": "Styling web pages.", "dueDate": "2025-10-05T23:59:00.000Z", "openUntilDate": "2025-10-07T23:59:00.000Z", "isOpen": true},
+    {"id": 13, "courseId": 2, "title": "JavaScript Basics", "description": "Intro to JS.", "dueDate": "2025-10-09T23:59:00.000Z", "openUntilDate": "2025-10-11T23:59:00.000Z", "isOpen": true},
+    {"id": 14, "courseId": 2, "title": "DOM Manipulation", "description": "Interacting with the DOM.", "dueDate": "2025-10-13T23:59:00.000Z", "openUntilDate": "2025-10-15T23:59:00.000Z", "isOpen": true},
+    {"id": 15, "courseId": 2, "title": "Events", "description": "Handling events.", "dueDate": "2025-10-17T23:59:00.000Z", "openUntilDate": "2025-10-19T23:59:00.000Z", "isOpen": true},
+    {"id": 16, "courseId": 2, "title": "Forms", "description": "Form handling.", "dueDate": "2025-10-21T23:59:00.000Z", "openUntilDate": "2025-10-23T23:59:00.000Z", "isOpen": true},
+    {"id": 17, "courseId": 2, "title": "Flexbox", "description": "Layout with Flexbox.", "dueDate": "2025-10-25T23:59:00.000Z", "openUntilDate": "2025-10-27T23:59:00.000Z", "isOpen": true},
+    {"id": 18, "courseId": 2, "title": "Grid", "description": "Layout with Grid.", "dueDate": "2025-10-29T23:59:00.000Z", "openUntilDate": "2025-10-31T23:59:00.000Z", "isOpen": true},
+    {"id": 19, "courseId": 2, "title": "Responsive Design", "description": "Media queries and responsive layout.", "dueDate": "2025-11-02T23:59:00.000Z", "openUntilDate": "2025-11-04T23:59:00.000Z", "isOpen": true},
+    {"id": 20, "courseId": 2, "title": "Final Web Project", "description": "Build a small website.", "dueDate": "2025-11-06T23:59:00.000Z", "openUntilDate": "2025-11-08T23:59:00.000Z", "isOpen": true},
+
+    {"id": 21, "courseId": 3, "title": "SQL Basics", "description": "Select, insert, update, delete.", "dueDate": "2025-10-01T23:59:00.000Z", "openUntilDate": "2025-10-03T23:59:00.000Z", "isOpen": true},
+    {"id": 22, "courseId": 3, "title": "Table Relationships", "description": "One-to-one, one-to-many.", "dueDate": "2025-10-05T23:59:00.000Z", "openUntilDate": "2025-10-07T23:59:00.000Z", "isOpen": true},
+    {"id": 23, "courseId": 3, "title": "Indexes", "description": "Improve query performance.", "dueDate": "2025-10-09T23:59:00.000Z", "openUntilDate": "2025-10-11T23:59:00.000Z", "isOpen": true},
+    {"id": 24, "courseId": 3, "title": "Views", "description": "Simplify complex queries.", "dueDate": "2025-10-13T23:59:00.000Z", "openUntilDate": "2025-10-15T23:59:00.000Z", "isOpen": true},
+    {"id": 25, "courseId": 3, "title": "Stored Procedures", "description": "Encapsulate SQL code.", "dueDate": "2025-10-17T23:59:00.000Z", "openUntilDate": "2025-10-19T23:59:00.000Z", "isOpen": true},
+    {"id": 26, "courseId": 3, "title": "Transactions", "description": "Atomic operations.", "dueDate": "2025-10-21T23:59:00.000Z", "openUntilDate": "2025-10-23T23:59:00.000Z", "isOpen": true},
+    {"id": 27, "courseId": 3, "title": "Normalization", "description": "Database design.", "dueDate": "2025-10-25T23:59:00.000Z", "openUntilDate": "2025-10-27T23:59:00.000Z", "isOpen": true},
+    {"id": 28, "courseId": 3, "title": "Backup & Restore", "description": "Data safety.", "dueDate": "2025-10-29T23:59:00.000Z", "openUntilDate": "2025-10-31T23:59:00.000Z", "isOpen": true},
+    {"id": 29, "courseId": 3, "title": "Indexes Advanced", "description": "Complex indexing.", "dueDate": "2025-11-02T23:59:00.000Z", "openUntilDate": "2025-11-04T23:59:00.000Z", "isOpen": true},
+    {"id": 30, "courseId": 3, "title": "Final Database Project", "description": "Build a relational database.", "dueDate": "2025-11-06T23:59:00.000Z", "openUntilDate": "2025-11-08T23:59:00.000Z", "isOpen": true},
+
+    {"id": 31, "courseId": 4, "title": "Big O Notation", "description": "Time complexity analysis.", "dueDate": "2025-10-01T23:59:00.000Z", "openUntilDate": "2025-10-03T23:59:00.000Z", "isOpen": true},
+    {"id": 32, "courseId": 4, "title": "Arrays & Linked Lists", "description": "Core data structures.", "dueDate": "2025-10-05T23:59:00.000Z", "openUntilDate": "2025-10-07T23:59:00.000Z", "isOpen": true},
+    {"id": 33, "courseId": 4, "title": "Stacks & Queues", "description": "Push, pop, enqueue, dequeue.", "dueDate": "2025-10-09T23:59:00.000Z", "openUntilDate": "2025-10-11T23:59:00.000Z", "isOpen": true},
+    {"id": 34, "courseId": 4, "title": "Trees", "description": "Binary trees, traversals.", "dueDate": "2025-10-13T23:59:00.000Z", "openUntilDate": "2025-10-15T23:59:00.000Z", "isOpen": true},
+    {"id": 35, "courseId": 4, "title": "Graphs", "description": "Graph theory basics.", "dueDate": "2025-10-17T23:59:00.000Z", "openUntilDate": "2025-10-19T23:59:00.000Z", "isOpen": true},
+    {"id": 36, "courseId": 4, "title": "Sorting Algorithms", "description": "Quick, merge, bubble.", "dueDate": "2025-10-21T23:59:00.000Z", "openUntilDate": "2025-10-23T23:59:00.000Z", "isOpen": true},
+    {"id": 37, "courseId": 4, "title": "Searching Algorithms", "description": "Binary search, linear search.", "dueDate": "2025-10-25T23:59:00.000Z", "openUntilDate": "2025-10-27T23:59:00.000Z", "isOpen": true},
+    {"id": 38, "courseId": 4, "title": "Hash Tables", "description": "Key-value storage.", "dueDate": "2025-10-29T23:59:00.000Z", "openUntilDate": "2025-10-31T23:59:00.000Z", "isOpen": true},
+    {"id": 39, "courseId": 4, "title": "Dynamic Programming", "description": "Optimization problems.", "dueDate": "2025-11-02T23:59:00.000Z", "openUntilDate": "2025-11-04T23:59:00.000Z", "isOpen": true},
+    {"id": 40, "courseId": 4, "title": "Final Algorithm Project", "description": "Algorithm implementation.", "dueDate": "2025-11-06T23:59:00.000Z", "openUntilDate": "2025-11-08T23:59:00.000Z", "isOpen": true},
+
+    {"id": 41, "courseId": 5, "title": "Software Development Lifecycle", "description": "Waterfall, Agile, Scrum.", "dueDate": "2025-10-01T23:59:00.000Z", "openUntilDate": "2025-10-03T23:59:00.000Z", "isOpen": true},
+    {"id": 42, "courseId": 5, "title": "Requirements Analysis", "description": "Gather and document requirements.", "dueDate": "2025-10-05T23:59:00.000Z", "openUntilDate": "2025-10-07T23:59:00.000Z", "isOpen": true},
+    {"id": 43, "courseId": 5, "title": "System Design", "description": "Architecture and design patterns.", "dueDate": "2025-10-09T23:59:00.000Z", "openUntilDate": "2025-10-11T23:59:00.000Z", "isOpen": true},
+    {"id": 44, "courseId": 5, "title": "Testing & QA", "description": "Unit, integration, system testing.", "dueDate": "2025-10-13T23:59:00.000Z", "openUntilDate": "2025-10-15T23:59:00.000Z", "isOpen": true},
+    {"id": 45, "courseId": 5, "title": "Version Control", "description": "Git basics and workflow.", "dueDate": "2025-10-17T23:59:00.000Z", "openUntilDate": "2025-10-19T23:59:00.000Z", "isOpen": true},
+    {"id": 46, "courseId": 5, "title": "Deployment", "description": "Deploying applications.", "dueDate": "2025-10-21T23:59:00.000Z", "openUntilDate": "2025-10-23T23:59:00.000Z", "isOpen": true},
+    {"id": 47, "courseId": 5, "title": "Maintenance", "description": "Bug fixes and updates.", "dueDate": "2025-10-25T23:59:00.000Z", "openUntilDate": "2025-10-27T23:59:00.000Z", "isOpen": true},
+    {"id": 48, "courseId": 5, "title": "Documentation", "description": "Write clear documentation.", "dueDate": "2025-10-29T23:59:00.000Z", "openUntilDate": "2025-10-31T23:59:00.000Z", "isOpen": true},
+    {"id": 49, "courseId": 5, "title": "Code Review", "description": "Peer review best practices.", "dueDate": "2025-11-02T23:59:00.000Z", "openUntilDate": "2025-11-04T23:59:00.000Z", "isOpen": true},
+    {"id": 50, "courseId": 5, "title": "Final Project", "description": "Full software project.", "dueDate": "2025-11-06T23:59:00.000Z", "openUntilDate": "2025-11-08T23:59:00.000Z", "isOpen": true}
   ],
   "enrollments": [
-    { "id": 1, "userId": 1, "courseId": 1 },
-    { "id": 2, "userId": 2, "courseId": 1 }
+    {"id":1,"userId":1,"courseId":1},{"id":2,"userId":1,"courseId":2},{"id":3,"userId":1,"courseId":3},{"id":4,"userId":1,"courseId":4},{"id":5,"userId":1,"courseId":5},
+    {"id":6,"userId":2,"courseId":1},{"id":7,"userId":2,"courseId":2},{"id":8,"userId":2,"courseId":3},{"id":9,"userId":2,"courseId":4},{"id":10,"userId":2,"courseId":5},
+    {"id":11,"userId":3,"courseId":1},{"id":12,"userId":3,"courseId":2},{"id":13,"userId":3,"courseId":3},{"id":14,"userId":3,"courseId":4},{"id":15,"userId":3,"courseId":5},
+    {"id":16,"userId":4,"courseId":1},{"id":17,"userId":4,"courseId":2},{"id":18,"userId":4,"courseId":3},{"id":19,"userId":4,"courseId":4},{"id":20,"userId":4,"courseId":5},
+    {"id":21,"userId":5,"courseId":1},{"id":22,"userId":5,"courseId":2},{"id":23,"userId":5,"courseId":3},{"id":24,"userId":5,"courseId":4},{"id":25,"userId":5,"courseId":5},
+    {"id":26,"userId":6,"courseId":1},{"id":27,"userId":6,"courseId":2},{"id":28,"userId":6,"courseId":3},{"id":29,"userId":6,"courseId":4},{"id":30,"userId":6,"courseId":5},
+    {"id":31,"userId":7,"courseId":1},{"id":32,"userId":7,"courseId":2},{"id":33,"userId":7,"courseId":3},{"id":34,"userId":7,"courseId":4},{"id":35,"userId":7,"courseId":5},
+    {"id":36,"userId":8,"courseId":1},{"id":37,"userId":8,"courseId":2},{"id":38,"userId":8,"courseId":3},{"id":39,"userId":8,"courseId":4},{"id":40,"userId":8,"courseId":5},
+    {"id":41,"userId":9,"courseId":1},{"id":42,"userId":9,"courseId":2},{"id":43,"userId":9,"courseId":3},{"id":44,"userId":9,"courseId":4},{"id":45,"userId":9,"courseId":5},
+    {"id":46,"userId":10,"courseId":1},{"id":47,"userId":10,"courseId":2},{"id":48,"userId":10,"courseId":3},{"id":49,"userId":10,"courseId":4},{"id":50,"userId":10,"courseId":5},
+    {"id":51,"userId":11,"courseId":1},{"id":52,"userId":11,"courseId":2},{"id":53,"userId":11,"courseId":3},{"id":54,"userId":11,"courseId":4},{"id":55,"userId":11,"courseId":5},
+    {"id":56,"userId":12,"courseId":1},{"id":57,"userId":12,"courseId":2},{"id":58,"userId":12,"courseId":3},{"id":59,"userId":12,"courseId":4},{"id":60,"userId":12,"courseId":5},
+    {"id":61,"userId":13,"courseId":1},{"id":62,"userId":13,"courseId":2},{"id":63,"userId":13,"courseId":3},{"id":64,"userId":13,"courseId":4},{"id":65,"userId":13,"courseId":5},
+    {"id":66,"userId":14,"courseId":1},{"id":67,"userId":14,"courseId":2},{"id":68,"userId":14,"courseId":3},{"id":69,"userId":14,"courseId":4},{"id":70,"userId":14,"courseId":5},
+    {"id":71,"userId":15,"courseId":1},{"id":72,"userId":15,"courseId":2},{"id":73,"userId":15,"courseId":3},{"id":74,"userId":15,"courseId":4},{"id":75,"userId":15,"courseId":5},
+    {"id":76,"userId":16,"courseId":1},{"id":77,"userId":16,"courseId":2},{"id":78,"userId":16,"courseId":3},{"id":79,"userId":16,"courseId":4},{"id":80,"userId":16,"courseId":5},
+    {"id":81,"userId":17,"courseId":1},{"id":82,"userId":17,"courseId":2},{"id":83,"userId":17,"courseId":3},{"id":84,"userId":17,"courseId":4},{"id":85,"userId":17,"courseId":5},
+    {"id":86,"userId":18,"courseId":1},{"id":87,"userId":18,"courseId":2},{"id":88,"userId":18,"courseId":3},{"id":89,"userId":18,"courseId":4},{"id":90,"userId":18,"courseId":5},
+    {"id":91,"userId":19,"courseId":1},{"id":92,"userId":19,"courseId":2},{"id":93,"userId":19,"courseId":3},{"id":94,"userId":19,"courseId":4},{"id":95,"userId":19,"courseId":5},
+    {"id":96,"userId":20,"courseId":1},{"id":97,"userId":20,"courseId":2},{"id":98,"userId":20,"courseId":3},{"id":99,"userId":20,"courseId":4},{"id":100,"userId":20,"courseId":5}
   ],
   "submissions": [
-    {
-      "id": 1,
-      "userId": 1,
-      "courseId": 1,
-      "assignmentId": 1,
-      "submittedBy": "2025-09-29T15:00:00.000Z",
-      "late": false
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "courseId": 1,
-      "assignmentId": 2,
-      "submittedBy": "2025-10-11T12:00:00.000Z",
-      "late": true
-    },
-    {
-      "id": 3,
-      "userId": 2,
-      "courseId": 1,
-      "assignmentId": 1,
-      "submittedBy": "2025-09-30T20:00:00.000Z",
-      "late": false
-    }
+    {"id":1,"userId":1,"courseId":1,"assignmentId":1,"submittedBy":"2025-09-28T18:00:00.000Z","isLate":false},
+    {"id":2,"userId":2,"courseId":1,"assignmentId":1,"submittedBy":"2025-09-29T18:00:00.000Z","isLate":false},
+    {"id":3,"userId":3,"courseId":1,"assignmentId":1,"submittedBy":"2025-10-02T18:00:00.000Z","isLate":true},
+    {"id":4,"userId":4,"courseId":2,"assignmentId":11,"submittedBy":"2025-10-01T19:00:00.000Z","isLate":false},
+    {"id":5,"userId":5,"courseId":3,"assignmentId":21,"submittedBy":"2025-10-03T20:00:00.000Z","isLate":false}
+  ],
+  "grades": [
+    {"id":1,"submissionId":1,"numberGrade":92.5},
+    {"id":2,"submissionId":2,"numberGrade":85.0},
+    {"id":3,"submissionId":3,"numberGrade":70.0},
+    {"id":4,"submissionId":4,"numberGrade":88.0},
+    {"id":5,"submissionId":5,"numberGrade":95.0}
   ]
 }
