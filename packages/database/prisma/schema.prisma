@@ -17,6 +17,7 @@ model User {
   name        String
   email       String       @unique
   enrollments Enrollment[]
+  submissions Submission[]
 }
 
 model Course {
@@ -25,6 +26,7 @@ model Course {
   description String
   enrollments Enrollment[]
   assignments Assignment[]
+  submissions Submission[]
 }
 
 model Enrollment {
@@ -36,10 +38,23 @@ model Enrollment {
 }
 
 model Assignment {
-  id          Int      @id @default(autoincrement())
-  course      Course   @relation(fields: [courseId], references: [id])
+  id          Int          @id @default(autoincrement())
+  course      Course       @relation(fields: [courseId], references: [id])
   courseId    Int
   dueDate     DateTime
   title       String
   description String
+  submissions Submission[]
+}
+
+model Submission {
+  id           Int        @id @default(autoincrement())
+  user         User       @relation(fields: [userId], references: [id])
+  course       Course     @relation(fields: [courseId], references: [id])
+  asssignment  Assignment @relation(fields: [assignmentId], references: [id])
+  userId       Int
+  courseId     Int
+  assignmentId Int
+  submittedBy  DateTime
+  late         Boolean
 }

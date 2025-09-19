@@ -1,55 +1,57 @@
 {
   "users": [
     { "id": 1, "name": "Alice Johnson", "email": "alice.johnson@example.com" },
-    { "id": 2, "name": "Bob Smith", "email": "bob.smith@example.com" },
-    { "id": 3, "name": "Charlie Brown", "email": "charlie.brown@example.com" },
-    { "id": 4, "name": "Diana Prince", "email": "diana.prince@example.com" }
+    { "id": 2, "name": "Bob Smith", "email": "bob.smith@example.com" }
   ],
   "courses": [
     {
       "id": 1,
       "name": "Introduction to Computer Science",
-      "description": "Learn the basics of computer science, including algorithms, programming, and problem-solving.",
+      "description": "Learn programming basics and problem solving.",
       "assignments": [
         {
           "id": 1,
           "title": "Hello World Program",
-          "description": "Write your first program in your chosen language.",
+          "description": "Write your first program",
           "dueDate": "2025-09-30T23:59:59.000Z"
         },
         {
           "id": 2,
           "title": "Basic Algorithms",
-          "description": "Implement sorting and searching algorithms.",
-          "dueDate": "2025-10-15T23:59:59.000Z"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Database Systems",
-      "description": "Introduction to relational databases, SQL, and normalization.",
-      "assignments": [
-        {
-          "id": 3,
-          "title": "SQL Queries",
-          "description": "Write queries to retrieve and manipulate data.",
-          "dueDate": "2025-09-28T23:59:59.000Z"
-        },
-        {
-          "id": 4,
-          "title": "Database Design",
-          "description": "Design an ER diagram and implement it in PostgreSQL.",
-          "dueDate": "2025-10-20T23:59:59.000Z"
+          "description": "Implement sorting algorithms",
+          "dueDate": "2025-10-10T23:59:59.000Z"
         }
       ]
     }
   ],
   "enrollments": [
     { "id": 1, "userId": 1, "courseId": 1 },
-    { "id": 2, "userId": 1, "courseId": 2 },
-    { "id": 3, "userId": 2, "courseId": 1 },
-    { "id": 4, "userId": 3, "courseId": 2 },
-    { "id": 5, "userId": 4, "courseId": 1 }
+    { "id": 2, "userId": 2, "courseId": 1 }
+  ],
+  "submissions": [
+    {
+      "id": 1,
+      "userId": 1,
+      "courseId": 1,
+      "assignmentId": 1,
+      "submittedBy": "2025-09-29T15:00:00.000Z",
+      "late": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "courseId": 1,
+      "assignmentId": 2,
+      "submittedBy": "2025-10-11T12:00:00.000Z",
+      "late": true
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "courseId": 1,
+      "assignmentId": 1,
+      "submittedBy": "2025-09-30T20:00:00.000Z",
+      "late": false
+    }
   ]
 }

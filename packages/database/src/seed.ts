@@ -1,6 +1,6 @@
 import { prisma } from './client';
 import type { Course, User } from '../generated/client';
-import { users, courses, enrollments } from './temp-data.json';
+import { users, courses, enrollments, submissions } from './temp-data.json';
 
 (async () => {
   try {
@@ -35,6 +35,14 @@ import { users, courses, enrollments } from './temp-data.json';
         });
       }),
     );
+    await Promise.all(
+      submissions.map(async (submission) => {
+        await prisma.submission.create({
+          data: {id: submission.id, userId: submission.userId, courseId: submission.courseId, assignmentId: submission.assignmentId, submittedBy: submission.submittedBy, late: submission.late}
+        })
+      })
+    )
+
   } catch (error) {
     console.error(error);
     process.exit(1);
