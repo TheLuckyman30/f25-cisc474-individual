@@ -1,31 +1,33 @@
 import { prisma } from './client';
-
-import type { User } from '../generated/client';
-
-const DEFAULT_USERS = [
-  // Add your own user to pre-populate the database with
-  {
-    name: 'Tim Apple',
-    email: 'tim@apple.com',
-  },
-] as Array<Partial<User>>;
+import type { Course, User } from '../generated/client';
+import { users, courses, enrollments } from './temp-data.json';
 
 (async () => {
   try {
     await Promise.all(
-      DEFAULT_USERS.map((user) =>
-        prisma.user.upsert({
-          where: {
-            email: user.email!,
+      courses.map(async (course) => {
+        await prisma.course.create({
+          data: { id: course.id, name: course.name },
+        });
+      }),
+    );
+    await Promise.all(
+      users.map(async (user) => {
+        await prisma.user.create({
+          data: { id: user.id, name: user.name, email: user.email },
+        });
+      }),
+    );
+    await Promise.all(
+      enrollments.map(async (enrollment) => {
+        await prisma.enrollment.create({
+          data: {
+            id: enrollment.id,
+            courseId: enrollment.courseId,
+            userId: enrollment.userId,
           },
-          update: {
-            ...user,
-          },
-          create: {
-            ...user,
-          },
-        }),
-      ),
+        });
+      }),
     );
   } catch (error) {
     console.error(error);

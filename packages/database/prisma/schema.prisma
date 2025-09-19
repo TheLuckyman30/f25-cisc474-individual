@@ -13,8 +13,22 @@ generator client {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
+  id          Int          @id @default(autoincrement())
+  name        String
+  email       String       @unique
+  enrollments Enrollment[]
+}
+
+model Course {
+  id          Int          @id @default(autoincrement())
+  name        String
+  enrollments Enrollment[]
+}
+
+model Enrollment {
+  id       Int    @id @default(autoincrement())
+  user     User   @relation(fields: [userId], references: [id])
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId Int
+  userId   Int
 }
