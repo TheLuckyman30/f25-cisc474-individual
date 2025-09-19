@@ -20,12 +20,15 @@ model User {
   emailVerified DateTime
   password      String
   schoolId      Int          @unique
+  ownedCourses  Course[]
   enrollments   Enrollment[]
   submissions   Submission[]
 }
 
 model Course {
   id          String       @id @default(uuid())
+  owner       User         @relation(fields: [ownerId], references: [id])
+  ownerId     String
   name        String
   description String
   enrollments Enrollment[]
