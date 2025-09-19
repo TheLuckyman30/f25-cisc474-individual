@@ -7,7 +7,13 @@ import { users, courses, enrollments } from './temp-data.json';
     await Promise.all(
       courses.map(async (course) => {
         await prisma.course.create({
-          data: { id: course.id, name: course.name },
+          data: {id: course.id, name: course.name, description: course.description}
+        });
+        
+        course.assignments.map(async (assignment) => {
+          await prisma.assignment.create({
+            data: {id: assignment.id, title: assignment.title, description: assignment.description, dueDate: assignment.dueDate, courseId: course.id}
+          })
         });
       }),
     );
