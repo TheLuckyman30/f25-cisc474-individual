@@ -23,8 +23,9 @@ model User {
   ownedAssignments  Assignment[]
   ownedCourses      Course[]
   enrollments       Enrollment[]
-  submissions       Submission[] @relation("SubmittedBy")
-  submissionsGraded Submission[] @relation("GradedBy")
+  submissions       Submission[] @relation(name: "SubmittedBy")
+  submissionsGraded Submission[] @relation(name: "GradedBy")
+  comments          Comment[]
 }
 
 model Course {
@@ -36,6 +37,7 @@ model Course {
   enrollments Enrollment[]
   assignments Assignment[]
   submissions Submission[]
+  comments    Comment[]
 }
 
 model Enrollment {
@@ -63,8 +65,8 @@ model Assignment {
 
 model Submission {
   id           String     @id @default(uuid())
-  submitter    User       @relation("SubmittedBy", fields: [submitterId], references: [id])
-  gradedBy     User?      @relation("GradedBy", fields: [gradedById], references: [id])
+  submitter    User       @relation(name: "SubmittedBy", fields: [submitterId], references: [id])
+  gradedBy     User?      @relation(name: "GradedBy", fields: [gradedById], references: [id])
   course       Course     @relation(fields: [courseId], references: [id])
   assignment   Assignment @relation(fields: [assignmentId], references: [id])
   submitterId  String
@@ -74,6 +76,18 @@ model Submission {
   submittedAt  DateTime
   isLate       Boolean
   grade        Grade[]
+  comments     Comment[]
+}
+
+model Comment {
+  id           String     @id @default(uuid())
+  commentor    User       @relation(fields: [commentorId], references: [id])
+  submission   Submission @relation(fields: [submissionId], references: [id])
+  course       Course     @relation(fields: [courseId], references: [id])
+  commentorId  String
+  submissionId String
+  courseId     String
+  content      String
 }
 
 model Grade {
