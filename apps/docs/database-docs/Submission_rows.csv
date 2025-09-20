@@ -1,0 +1,11 @@
+id,submitterId,gradedById,courseId,assignmentId,submittedAt,submissionFileReference,submissionTextEntry,isLate
+sub1,user6,,course1,assign1,2025-09-25 14:00:00,,,false
+sub10,user15,,course5,assign42,2025-09-30 16:00:00,,,false
+sub2,user7,,course1,assign2,2025-09-26 16:30:00,,,false
+sub3,user8,,course2,assign11,2025-09-27 10:15:00,,,false
+sub4,user9,,course2,assign12,2025-09-28 12:00:00,,,true
+sub5,user10,,course3,assign21,2025-09-29 09:45:00,,,false
+sub6,user11,,course3,assign22,2025-09-29 15:20:00,,,false
+sub7,user12,,course4,assign31,2025-09-30 11:10:00,,,false
+sub8,user13,,course4,assign32,2025-09-30 13:00:00,,,true
+sub9,user14,,course5,assign41,2025-09-30 14:30:00,,,false

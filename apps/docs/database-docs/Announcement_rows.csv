@@ -1,0 +1,11 @@
+id,sentById,courseId,title,content,sentAt
+ann1,user1,course1,Welcome to Python 101,Looking forward to a great semester!,2025-09-01 09:00:00
+ann10,user5,course5,Assignment 1 Posted,Check out the first Java assignment.,2025-09-02 11:00:00
+ann2,user1,course1,Assignment 1 Posted,Please check the first assignment in your course page.,2025-09-02 10:00:00
+ann3,user2,course2,Welcome to Data Structures,Excited to explore algorithms together.,2025-09-01 09:15:00
+ann4,user2,course2,Assignment 1 Posted,First assignment is now available.,2025-09-02 10:15:00
+ann5,user3,course3,Welcome to Databases,We'll start with basic SQL queries.,2025-09-01 09:30:00
+ann6,user3,course3,Assignment 1 Posted,Check your first database assignment.,2025-09-02 10:30:00
+ann7,user4,course4,Welcome to Web Development,Excited to start building websites!,2025-09-01 09:45:00
+ann8,user4,course4,Assignment 1 Posted,Your first web development assignment is now available.,2025-09-02 10:45:00
+ann9,user5,course5,Welcome to Java Programming,We'll cover the basics and OOP principles.,2025-09-01 10:00:00

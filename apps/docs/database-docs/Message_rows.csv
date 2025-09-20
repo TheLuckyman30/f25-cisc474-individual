@@ -1,0 +1,11 @@
+id,sentById,conversationId,content,sentAt,updatedAt
+msg1,user6,conv1,Does anyone know how to solve assignment 1?,2025-09-10 09:10:00,2025-09-20 02:37:24.588
+msg10,user5,conv5,Remember to extend the parent class properly.,2025-09-14 13:10:00,2025-09-20 02:37:24.588
+msg2,user1,conv1,"Check the lecture notes section 2, it should help.",2025-09-10 09:15:00,2025-09-20 02:37:24.588
+msg3,user8,conv2,I'm confused about doubly linked lists.,2025-09-11 10:05:00,2025-09-20 02:37:24.588
+msg4,user2,conv2,Think of it as nodes pointing both forward and backward.,2025-09-11 10:10:00,2025-09-20 02:37:24.588
+msg5,user10,conv3,Can we split the ER diagram work?,2025-09-12 11:05:00,2025-09-20 02:37:24.588
+msg6,user3,conv3,"Yes, I'll handle the tables, you can do relationships.",2025-09-12 11:10:00,2025-09-20 02:37:24.588
+msg7,user12,conv4,How do I center a div using flex?,2025-09-13 12:05:00,2025-09-20 02:37:24.588
+msg8,user4,conv4,Use justify-content and align-items center.,2025-09-13 12:10:00,2025-09-20 02:37:24.588
+msg9,user14,conv5,I can't figure out inheritance here.,2025-09-14 13:05:00,2025-09-20 02:37:24.588
