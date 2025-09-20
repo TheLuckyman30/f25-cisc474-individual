@@ -19,14 +19,14 @@ model User {
   email             String         @unique
   emailVerified     DateTime?
   password          String
-  schoolId          Int            @unique
+  userSchoolId      Int            @unique
   ownedAssignments  Assignment[]
   ownedCourses      Course[]
   enrollments       Enrollment[]
   submissions       Submission[]   @relation(name: "SubmittedBy")
   submissionsGraded Submission[]   @relation(name: "GradedBy")
   comments          Comment[]
-  conversations     Conversation[] @relation(name: "Participants")
+  conversations     Conversation[] @relation(name: "ConversationParticipants")
   ownedConversation Conversation[] @relation(name: "ConversationOwner")
   messages          Message[]
   sentAnnouncements Announcement[]
@@ -55,35 +55,39 @@ model Enrollment {
 }
 
 model Assignment {
-  id            String       @id @default(uuid())
-  course        Course       @relation(fields: [courseId], references: [id])
-  assignedBy    User         @relation(fields: [assignedById], references: [id])
-  assignedById  String
-  courseId      String
-  createdAt     DateTime     @default(now())
-  title         String
-  description   String
-  dueDate       DateTime
-  openUntilDate DateTime
-  isOpen        Boolean
-  visible       Boolean
-  submissions   Submission[]
+  id             String         @id @default(uuid())
+  course         Course         @relation(fields: [courseId], references: [id])
+  assignedBy     User           @relation(fields: [assignedById], references: [id])
+  assignedById   String
+  courseId       String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime?      @updatedAt
+  title          String
+  description    String
+  dueDate        DateTime
+  openUntilDate  DateTime
+  isOpen         Boolean
+  visible        Boolean
+  submissionType SubmissionType @default(TEXT_ENTRY)
+  submissions    Submission[]
 }
 
 model Submission {
-  id           String     @id @default(uuid())
-  submitter    User       @relation(name: "SubmittedBy", fields: [submitterId], references: [id])
-  gradedBy     User?      @relation(name: "GradedBy", fields: [gradedById], references: [id])
-  course       Course     @relation(fields: [courseId], references: [id])
-  assignment   Assignment @relation(fields: [assignmentId], references: [id])
-  submitterId  String
-  gradedById   String?
-  courseId     String
-  assignmentId String
-  submittedAt  DateTime   @default(now())
-  isLate       Boolean
-  grade        Grade?
-  comments     Comment[]
+  id                      String     @id @default(uuid())
+  submitter               User       @relation(name: "SubmittedBy", fields: [submitterId], references: [id])
+  gradedBy                User?      @relation(name: "GradedBy", fields: [gradedById], references: [id])
+  course                  Course     @relation(fields: [courseId], references: [id])
+  assignment              Assignment @relation(fields: [assignmentId], references: [id])
+  submitterId             String
+  gradedById              String?
+  courseId                String
+  assignmentId            String
+  submittedAt             DateTime   @default(now())
+  submissionFileReference String? // Not sur if I want files to be stored in the DB or not
+  submissionTextEntry     String?
+  isLate                  Boolean
+  grade                   Grade?
+  comments                Comment[]
 }
 
 model Comment {
@@ -96,6 +100,7 @@ model Comment {
   courseId     String
   content      String
   sentAt       DateTime   @default(now())
+  updatedAt    DateTime?  @updatedAt
 }
 
 model Grade {
@@ -105,6 +110,7 @@ model Grade {
   numberGrade  Float
   visible      Boolean
   gradedAt     DateTime
+  updatedAt    DateTime?  @updatedAt
 }
 
 model Conversation {
@@ -114,7 +120,7 @@ model Conversation {
   createdAt    DateTime
   title        String?
   description  String?
-  participants User[]    @relation(name: "Participants")
+  participants User[]    @relation(name: "ConversationParticipants")
   messages     Message[]
 }
 
@@ -126,18 +132,18 @@ model Message {
   conversationId String
   content        String
   sentAt         DateTime     @default(now())
+  updatedAt      DateTime?    @updatedAt
 }
 
 model Announcement {
   id       String   @id @default(uuid())
-  sentBy   User     @relation(fields: [userId], references: [id])
+  sentBy   User     @relation(fields: [sentById], references: [id])
   course   Course   @relation(fields: [courseId], references: [id])
   sentById String
   courseId String
   title    String
   content  String
   sentAt   DateTime @default(now())
-  userId   String
 }
 
 enum Role {
@@ -145,4 +151,10 @@ enum Role {
   INSTRUCTOR
   TA
   ADMIN
+}
+
+enum SubmissionType {
+  PDF
+  DOCX
+  TEXT_ENTRY
 }
