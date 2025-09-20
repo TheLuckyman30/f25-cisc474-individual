@@ -1,0 +1,51 @@
+id,assignedById,courseId,createdAt,updatedAt,title,description,dueDate,openUntilDate,isOpen,visible,submissionType
+assign1,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Intro to Python,Basic Python exercises.,2025-10-01 23:59:00,2025-10-01 23:59:00,true,true,TEXT_ENTRY
+assign10,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Final Project,Combine everything learned.,2025-11-15 23:59:00,2025-11-15 23:59:00,true,true,TEXT_ENTRY
+assign11,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Arrays,Working with arrays.,2025-10-01 23:59:00,2025-10-01 23:59:00,true,true,TEXT_ENTRY
+assign12,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Linked Lists,Implement linked lists.,2025-10-05 23:59:00,2025-10-05 23:59:00,true,true,TEXT_ENTRY
+assign13,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Stacks & Queues,Implement stacks and queues.,2025-10-10 23:59:00,2025-10-10 23:59:00,true,true,TEXT_ENTRY
+assign14,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Recursion,Recursive algorithms.,2025-10-15 23:59:00,2025-10-15 23:59:00,true,true,TEXT_ENTRY
+assign15,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Sorting Algorithms,"Bubble, Merge, Quick Sort.",2025-10-20 23:59:00,2025-10-20 23:59:00,true,true,TEXT_ENTRY
+assign16,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Search Algorithms,Linear and Binary Search.,2025-10-25 23:59:00,2025-10-25 23:59:00,true,true,TEXT_ENTRY
+assign17,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Hash Tables,Implement hash tables.,2025-10-30 23:59:00,2025-10-30 23:59:00,true,true,TEXT_ENTRY
+assign18,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Graphs,Graph representations.,2025-11-04 23:59:00,2025-11-04 23:59:00,true,true,TEXT_ENTRY
+assign19,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Trees,Binary trees and traversals.,2025-11-09 23:59:00,2025-11-09 23:59:00,true,true,TEXT_ENTRY
+assign2,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Variables and Data Types,Practice with variables.,2025-10-05 23:59:00,2025-10-05 23:59:00,true,true,TEXT_ENTRY
+assign20,user2,course2,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Final Project,Data structure implementation project.,2025-11-15 23:59:00,2025-11-15 23:59:00,true,true,TEXT_ENTRY
+assign21,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Introduction to SQL,Basic SQL queries.,2025-10-01 23:59:00,2025-10-01 23:59:00,true,true,TEXT_ENTRY
+assign22,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Database Design,ER diagrams.,2025-10-05 23:59:00,2025-10-05 23:59:00,true,true,TEXT_ENTRY
+assign23,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Normalization,Normal forms.,2025-10-10 23:59:00,2025-10-10 23:59:00,true,true,TEXT_ENTRY
+assign24,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Joins,"Inner, outer joins.",2025-10-15 23:59:00,2025-10-15 23:59:00,true,true,TEXT_ENTRY
+assign25,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Indexes,Creating indexes.,2025-10-20 23:59:00,2025-10-20 23:59:00,true,true,TEXT_ENTRY
+assign26,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Stored Procedures,Creating procedures.,2025-10-25 23:59:00,2025-10-25 23:59:00,true,true,TEXT_ENTRY
+assign27,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Triggers,Database triggers.,2025-10-30 23:59:00,2025-10-30 23:59:00,true,true,TEXT_ENTRY
+assign28,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Views,Creating views.,2025-11-04 23:59:00,2025-11-04 23:59:00,true,true,TEXT_ENTRY
+assign29,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Transactions,ACID properties.,2025-11-09 23:59:00,2025-11-09 23:59:00,true,true,TEXT_ENTRY
+assign3,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Control Flow,If statements and loops.,2025-10-10 23:59:00,2025-10-10 23:59:00,true,true,TEXT_ENTRY
+assign30,user3,course3,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Final Project,Database design project.,2025-11-15 23:59:00,2025-11-15 23:59:00,true,true,TEXT_ENTRY
+assign31,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Intro to Web Dev,HTML and CSS basics.,2025-10-01 23:59:00,2025-10-01 23:59:00,true,true,TEXT_ENTRY
+assign32,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,JavaScript Basics,Variables and functions.,2025-10-05 23:59:00,2025-10-05 23:59:00,true,true,TEXT_ENTRY
+assign33,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,DOM Manipulation,Changing page content.,2025-10-10 23:59:00,2025-10-10 23:59:00,true,true,TEXT_ENTRY
+assign34,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Events,Handling user events.,2025-10-15 23:59:00,2025-10-15 23:59:00,true,true,TEXT_ENTRY
+assign35,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Forms,HTML forms and validation.,2025-10-20 23:59:00,2025-10-20 23:59:00,true,true,TEXT_ENTRY
+assign36,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,CSS Flexbox,Layout with flexbox.,2025-10-25 23:59:00,2025-10-25 23:59:00,true,true,TEXT_ENTRY
+assign37,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,CSS Grid,Layout with grid.,2025-10-30 23:59:00,2025-10-30 23:59:00,true,true,TEXT_ENTRY
+assign38,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Responsive Design,Media queries.,2025-11-04 23:59:00,2025-11-04 23:59:00,true,true,TEXT_ENTRY
+assign39,user4,course4,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,JavaScript Events,Advanced event handling.,2025-11-09 23:59:00,2025-11-09 23:59:00,true,true,TEXT_ENTRY
+assign4,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Functions,Writing functions in Python.,2025-10-15 23:59:00,2025-10-15 23:59:00,true,true,TEXT_ENTRY
+assign40,user4,course4,2025-09-20 02:37:18.565,2025-09-20 02:37:18.565,Final Project,Build a small website.,2025-11-15 23:59:00,2025-11-15 23:59:00,true,true,TEXT_ENTRY
+assign41,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Intro to Java,Basic Java syntax.,2025-10-01 23:59:00,2025-10-01 23:59:00,true,true,TEXT_ENTRY
+assign42,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,OOP Basics,Classes and objects.,2025-10-05 23:59:00,2025-10-05 23:59:00,true,true,TEXT_ENTRY
+assign43,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Inheritance,Extending classes.,2025-10-10 23:59:00,2025-10-10 23:59:00,true,true,TEXT_ENTRY
+assign44,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Interfaces,Using interfaces.,2025-10-15 23:59:00,2025-10-15 23:59:00,true,true,TEXT_ENTRY
+assign45,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Collections,"Lists, sets, maps.",2025-10-20 23:59:00,2025-10-20 23:59:00,true,true,TEXT_ENTRY
+assign46,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Generics,Generic types.,2025-10-25 23:59:00,2025-10-25 23:59:00,true,true,TEXT_ENTRY
+assign47,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Exceptions,Error handling in Java.,2025-10-30 23:59:00,2025-10-30 23:59:00,true,true,TEXT_ENTRY
+assign48,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,File I/O,Reading and writing files.,2025-11-04 23:59:00,2025-11-04 23:59:00,true,true,TEXT_ENTRY
+assign49,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Multithreading,Basic threading concepts.,2025-11-09 23:59:00,2025-11-09 23:59:00,true,true,TEXT_ENTRY
+assign5,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Lists and Dictionaries,Practice with lists and dicts.,2025-10-20 23:59:00,2025-10-20 23:59:00,true,true,TEXT_ENTRY
+assign50,user5,course5,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Final Project,Build a small Java application.,2025-11-15 23:59:00,2025-11-15 23:59:00,true,true,TEXT_ENTRY
+assign6,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,String Manipulation,Working with strings.,2025-10-25 23:59:00,2025-10-25 23:59:00,true,true,TEXT_ENTRY
+assign7,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,File I/O,Reading and writing files.,2025-10-30 23:59:00,2025-10-30 23:59:00,true,true,TEXT_ENTRY
+assign8,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Exceptions,Handling exceptions.,2025-11-04 23:59:00,2025-11-04 23:59:00,true,true,TEXT_ENTRY
+assign9,user1,course1,2025-09-20 02:37:18.564,2025-09-20 02:37:18.564,Modules,Using Python modules.,2025-11-09 23:59:00,2025-11-09 23:59:00,true,true,TEXT_ENTRY

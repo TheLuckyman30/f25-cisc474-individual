@@ -1,0 +1,6 @@
+id,ownerId,name,description
+course1,user1,Python 101,Introduction to Python programming.
+course2,user2,Data Structures,"Learn about arrays, linked lists, and more."
+course3,user3,Databases,"SQL, ER diagrams, and database design."
+course4,user4,Web Development,"HTML, CSS, and JavaScript basics."
+course5,user5,Java Programming,Java basics and Object-Oriented Programming.
