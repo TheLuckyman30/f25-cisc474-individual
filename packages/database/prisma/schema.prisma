@@ -29,18 +29,20 @@ model User {
   conversations     Conversation[] @relation(name: "Participants")
   ownedConversation Conversation[] @relation(name: "ConversationOwner")
   messages          Message[]
+  sentAnnouncements Announcement[]
 }
 
 model Course {
-  id          String       @id @default(uuid())
-  owner       User         @relation(fields: [ownerId], references: [id])
-  ownerId     String
-  name        String
-  description String
-  enrollments Enrollment[]
-  assignments Assignment[]
-  submissions Submission[]
-  comments    Comment[]
+  id            String         @id @default(uuid())
+  owner         User           @relation(fields: [ownerId], references: [id])
+  ownerId       String
+  name          String
+  description   String
+  enrollments   Enrollment[]
+  assignments   Assignment[]
+  submissions   Submission[]
+  comments      Comment[]
+  announcements Announcement[]
 }
 
 model Enrollment {
@@ -124,6 +126,18 @@ model Message {
   conversationId String
   content        String
   sentAt         DateTime     @default(now())
+}
+
+model Announcement {
+  id       String   @id @default(uuid())
+  sentBy   User     @relation(fields: [userId], references: [id])
+  course   Course   @relation(fields: [courseId], references: [id])
+  sentById String
+  courseId String
+  title    String
+  content  String
+  sentAt   DateTime @default(now())
+  userId   String
 }
 
 enum Role {
