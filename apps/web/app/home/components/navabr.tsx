@@ -1,5 +1,4 @@
 'use client';
-
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -13,19 +12,14 @@ function NavBar() {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="fixed flex gap-5 p-2 border border-blue-400 font-bold rounded-md">
+    <div className="flex justify-between items-center fixed w-full h-fit p-10 bg-white shadow-md">
+      <div>Site Page</div>
+      <div className="flex items-center gap-15 rounded-md p-3 bg-gray-200/30">
         {NAV_LINKS.map((link, index) => (
-          <Link
-            href={link.toLowerCase()}
-            key={index}
-            onClick={() => setNewPage(index)}
-            className={`p-1 hover:-translate-y-1 duration-200 rounded-md ${index === currentPage ? ' bg-blue-300' : ''}`}
-          >
-            {link}
-          </Link>
+          <div key={index}>{link}</div>
         ))}
       </div>
+      <div>Some button probably</div>
     </div>
   );
 }
