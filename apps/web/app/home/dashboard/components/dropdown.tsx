@@ -1,53 +1,38 @@
 'use client';
-import { ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { ChangeEvent } from 'react';
 
 interface DropdownProps {
-  selectedInfo: string;
-  setSelectedInfo: (newInfo: string) => void;
+  possibleItems: string[];
+  selectedItem: string;
+  setSelectedItem: (newInfo: string) => void;
 }
 
-const POSSIBLE_INFORMATION = ['Courses', 'Assignments'];
-
-function Dropdown({ selectedInfo, setSelectedInfo }: DropdownProps) {
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-
-  function changeDropdown() {
-    setDropdownOpen(!dropdownOpen);
-  }
-
-  function changeInfoShowed(
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) {
-    const newInfo = event.currentTarget.id;
-    setSelectedInfo(newInfo);
+function Dropdown({
+  possibleItems,
+  selectedItem,
+  setSelectedItem,
+}: DropdownProps) {
+  function changeInfoShowed(event: ChangeEvent<HTMLSelectElement>) {
+    const newInfo = event.currentTarget.value;
+    console.log(newInfo);
+    setSelectedItem(newInfo);
   }
 
   return (
-    <div className="relative select-none">
-      <div
-        className="flex justify-between gap-5 w-fit bg-white p-2 rounded-md shadow-md cursor-pointer"
-        onClick={changeDropdown}
+    <form className="flex flex-col select-none">
+      <label className="font-bold">Select a view</label>
+      <select
+        defaultValue={selectedItem}
+        onChange={(event) => changeInfoShowed(event)}
+        className="bg-white shadow-md rounded-md w-fit p-2 border border-gray-400 focus:outline-none "
       >
-        <div>{selectedInfo}</div>
-        <ChevronDown />
-      </div>
-      <div
-        className={`w-fit absolute flex-col bg-white p-2 rounded-md shadow-md top-[130%] duration-100
-          ${dropdownOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-      >
-        {POSSIBLE_INFORMATION.map((info) => (
-          <div
-            id={info}
-            key={info}
-            onClick={changeInfoShowed}
-            className="hover:bg-gray-100 cursor-pointer rounded-md p-1"
-          >
-            {info}
-          </div>
+        {possibleItems.map((item, index) => (
+          <option key={index} value={item}>
+            {item}
+          </option>
         ))}
-      </div>
-    </div>
+      </select>
+    </form>
   );
 }
 

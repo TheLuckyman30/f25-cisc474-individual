@@ -1,8 +1,10 @@
 'use client';
 import CourseCard from './components/course-card';
-import { courses } from '../../temp-data/temp-data.json';
 import Dropdown from './components/dropdown';
+import { courses } from '../../temp-data/temp-data.json';
 import { useState } from 'react';
+
+const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 
 function Dashboard() {
   const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
@@ -12,8 +14,9 @@ function Dashboard() {
       <div className="flex flex-col gap-10 w-fit max-w-[90%]">
         <div className="font-bold text-4xl md:text-7xl">{selectedInfo}</div>
         <Dropdown
-          selectedInfo={selectedInfo}
-          setSelectedInfo={setSelectedInfo}
+          possibleItems={POSSIBLE_ITEMS}
+          selectedItem={selectedInfo}
+          setSelectedItem={setSelectedInfo}
         />
         <div className="flex flex-wrap gap-2">
           {courses.map((course, index) => (
