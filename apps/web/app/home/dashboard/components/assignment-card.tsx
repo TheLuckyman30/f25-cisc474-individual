@@ -29,7 +29,7 @@ function AssingmentCard({ assignment }: AssignmentCardProps) {
           <div>{assignment.description}</div>
         </div>
         <div className="flex w-full justify-center">
-          <div className="flex bg-blue-400 hover:scale-105 duration-100 rounded-md text-white gap-5 font-bold p-1 cursor-pointer">
+          <div className="flex bg-blue-400 hover:scale-105 duration-100 rounded-md text-white gap-2.5 font-bold p-1 cursor-pointer">
             <Link href={`/courses/${course.id}/course-home`}>Go to Course</Link>
             <MoveRight color="white" />
           </div>
