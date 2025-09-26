@@ -5,9 +5,10 @@ import { CoursesModule } from './courses/courses.module';
 import { AssignmentsModule } from './assignments/assingments.module';
 import { UsersModule } from './users/users.model';
 import { SubmissionsModule } from './submissions/submissions.module';
+import { AnnoucementsModule } from './annoucements/announcements.module';
 
 @Module({
-  imports: [CoursesModule, AssignmentsModule, UsersModule, SubmissionsModule],
+  imports: [CoursesModule, AssignmentsModule, UsersModule, SubmissionsModule, AnnoucementsModule],
   controllers: [AppController],
   providers: [AppService],
 })
