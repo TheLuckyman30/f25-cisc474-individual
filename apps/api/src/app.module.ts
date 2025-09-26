@@ -4,9 +4,10 @@ import { AppController } from './app.controller';
 import { CoursesModule } from './courses/courses.module';
 import { AssignmentsModule } from './assignments/assingments.module';
 import { UsersModule } from './users/users.model';
+import { SubmissionsModule } from './submissions/submissions.module';
 
 @Module({
-  imports: [CoursesModule, AssignmentsModule, UsersModule],
+  imports: [CoursesModule, AssignmentsModule, UsersModule, SubmissionsModule],
   controllers: [AppController],
   providers: [AppService],
 })
