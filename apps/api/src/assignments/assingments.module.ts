@@ -7,4 +7,4 @@ import { AssignmentsService } from './assignments.service';
   controllers: [AssingmentsController],
   providers: [AssignmentsService, PrismaService],
 })
-export class AssignmentModel {}
+export class AssignmentsModule {}
