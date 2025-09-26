@@ -1,0 +1,6 @@
+id,ownerId,createdAt,title,description
+conv1,user1,2025-09-10 09:00:00,Python Help,Discussion about Python 101 assignments.
+conv2,user2,2025-09-11 10:00:00,Data Structures Q&A,Clarifying linked list concepts.
+conv3,user3,2025-09-12 11:00:00,Database Project,Collaboration for SQL assignment.
+conv4,user4,2025-09-13 12:00:00,Web Dev Tips,Sharing CSS and JS tips.
+conv5,user5,2025-09-14 13:00:00,Java Assignment Discussion,Talk about the first OOP assignment.

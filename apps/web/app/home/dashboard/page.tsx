@@ -1,45 +1,33 @@
 'use client';
-
 import CourseCard from './components/course-card';
+import Dropdown from './components/dropdown';
 import { courses } from '../../temp-data/temp-data.json';
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from '@mui/material';
+import { assignments } from '../../temp-data/temp-data.json';
 import { useState } from 'react';
-import Link from 'next/link';
+import AssignmentCard from './components/assignment-card';
+
+const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 
 function Dashboard() {
-  const [displayedInfo, setDisplayedInfo] = useState<string>('Courses');
-
-  function handleDisplayInfoChange(event: SelectChangeEvent) {
-    setDisplayedInfo(event.target.value);
-  }
+  const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
 
   return (
-    <div className="flex justify-center items-center h-lvh w-lvw">
-      <Link
-        href="/"
-        className="absolute top-0 left-0 m-5 p-1 border rounded-md hover:-translate-y-2 duration-200"
-      >
-        Welcome Page
-      </Link>
-      <div className="grid grid-rows-1 gap-25 w-fit">
-        <div className="flex justify-between">
-          <FormControl>
-            <InputLabel>Select Info</InputLabel>
-            <Select value={displayedInfo} onChange={handleDisplayInfoChange}>
-              <MenuItem value={'Courses'}>Courses</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-        <div className="grid grid-cols-5 gap-10">
-          {displayedInfo === 'Courses' &&
+    <div className="flex justify-center w-lvw min-h-lvh pt-[28vh]">
+      <div className="flex flex-col gap-10 w-[90%] 2xl:max-w-[60%]">
+        <div className="font-bold text-4xl md:text-7xl">{selectedInfo}</div>
+        <Dropdown
+          possibleItems={POSSIBLE_ITEMS}
+          selectedItem={selectedInfo}
+          setSelectedItem={setSelectedInfo}
+        />
+        <div className="flex flex-wrap gap-2 ">
+          {selectedInfo === 'Courses' &&
             courses.map((course, index) => (
               <CourseCard course={course} key={index} />
+            ))}
+          {selectedInfo === 'Assignments' &&
+            assignments.map((assingment, index) => (
+              <AssignmentCard key={index} assignment={assingment} />
             ))}
         </div>
       </div>

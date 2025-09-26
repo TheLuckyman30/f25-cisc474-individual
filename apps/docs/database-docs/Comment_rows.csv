@@ -1,0 +1,11 @@
+id,commentorId,submissionId,courseId,content,sentAt,updatedAt
+comment1,user1,sub1,course1,Great job on the Python basics!,2025-09-26 10:30:00,2025-09-20 02:37:22.857
+comment10,user5,sub10,course5,Remember to implement OOP principles properly.,2025-10-01 17:00:00,2025-09-20 02:37:22.857
+comment2,user1,sub2,course1,Remember to check variable naming conventions.,2025-09-27 10:00:00,2025-09-20 02:37:22.857
+comment3,user2,sub3,course2,Arrays are implemented correctly.,2025-09-28 12:00:00,2025-09-20 02:37:22.857
+comment4,user2,sub4,course2,Try to optimize your linked list implementation.,2025-09-29 14:00:00,2025-09-20 02:37:22.857
+comment5,user3,sub5,course3,Good work with SQL queries!,2025-09-30 11:00:00,2025-09-20 02:37:22.857
+comment6,user3,sub6,course3,Make sure to follow normalization rules.,2025-09-30 13:30:00,2025-09-20 02:37:22.857
+comment7,user4,sub7,course4,HTML and CSS look great!,2025-10-01 11:30:00,2025-09-20 02:37:22.857
+comment8,user4,sub8,course4,Check your JavaScript functions for errors.,2025-10-01 14:00:00,2025-09-20 02:37:22.857
+comment9,user5,sub9,course5,Java basics are correct.,2025-10-01 15:30:00,2025-09-20 02:37:22.857
