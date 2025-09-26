@@ -6,9 +6,10 @@ import { AssignmentsModule } from './assignments/assingments.module';
 import { UsersModule } from './users/users.model';
 import { SubmissionsModule } from './submissions/submissions.module';
 import { AnnoucementsModule } from './annoucements/announcements.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
-  imports: [CoursesModule, AssignmentsModule, UsersModule, SubmissionsModule, AnnoucementsModule],
+  imports: [CoursesModule, AssignmentsModule, UsersModule, SubmissionsModule, AnnoucementsModule, MessagesModule],
   controllers: [AppController],
   providers: [AppService],
 })
