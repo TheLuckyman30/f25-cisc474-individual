@@ -17,7 +17,7 @@ function AssingmentCard({ assignment }: AssignmentCardProps) {
       <div className="flex flex-col justify-between rounded-md p-2 shadow-md bg-white border-b-blue-400 border-b-8 min-h-75 w-full md:w-75 ">
         <div className="flex flex-col gap-2">
           <div className="text-sm text-gray-500">{course.name}</div>
-          <hr className="border-t-gray-500"></hr>
+          <hr className="border-t-gray-300"></hr>
           <div className="flex gap-2 justify-between ">
             <div className="font-bold text-xl">{assignment.name}</div>
             <Link
