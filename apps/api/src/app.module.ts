@@ -8,6 +8,7 @@ import { SubmissionsModule } from './submissions/submissions.module';
 import { AnnoucementsModule } from './annoucements/announcements.module';
 import { MessagesModule } from './messages/messages.module';
 import { GradesModule } from './grades/grades.module';
+import { EnrollmentsModule } from './enrollments/enrollment.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { GradesModule } from './grades/grades.module';
     SubmissionsModule,
     AnnoucementsModule,
     MessagesModule,
-    GradesModule,
+    GradesModule, EnrollmentsModule
   ],
   controllers: [AppController],
   providers: [AppService],
