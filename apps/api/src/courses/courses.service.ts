@@ -16,4 +16,8 @@ export class CoursesService {
     const {skip, take, cursor, where, orderBy} = params;
     return this.prisma.course.findMany({skip, take, cursor, where, orderBy});
   }
+
+  async findCourse(courseWhereUniqueInput: Prisma.CourseWhereUniqueInput): Promise<Course | null> {
+    return this.prisma.course.findUnique({where: courseWhereUniqueInput});
+  }
 }

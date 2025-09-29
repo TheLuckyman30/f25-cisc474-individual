@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma.service';
 export class SubmissionsService {
   constructor(private prisma: PrismaService) {}
 
-  async findAllServices(params: {
+  async findAllSubmissions(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.SubmissionWhereUniqueInput;
@@ -15,5 +15,9 @@ export class SubmissionsService {
   }): Promise<Submission[]> {
     const {skip, take, cursor, where, orderBy} = params;
     return this.prisma.submission.findMany({skip, take, cursor, where, orderBy});
+  }
+
+  async findSubmission(submissionWhereUniqueInput: Prisma.SubmissionWhereUniqueInput): Promise<Submission | null> {
+    return this.prisma.submission.findUnique({where: submissionWhereUniqueInput});
   }
 }

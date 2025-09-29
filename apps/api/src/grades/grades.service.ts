@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma.service';
 export class GradesService {
   constructor(private prisma: PrismaService) {}
 
-  async findAllMessages(params: {
+  async findAllGrades(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.GradeWhereUniqueInput;
@@ -15,5 +15,9 @@ export class GradesService {
   }): Promise<Grade[]> {
     const {skip, take, cursor, where, orderBy} = params;
     return this.prisma.grade.findMany({skip, take, cursor, where, orderBy});
+  }
+
+  async findGrade(gradeWhereUniqueInput: Prisma.GradeWhereUniqueInput): Promise<Grade | null> {
+    return this.prisma.grade.findUnique({where: gradeWhereUniqueInput});
   }
 }

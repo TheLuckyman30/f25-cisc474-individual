@@ -16,4 +16,8 @@ export class AnnoucementsService {
     const {skip, take, cursor, where, orderBy} = params;
     return this.prisma.announcement.findMany({skip, take, cursor, where, orderBy});
   }
+
+  async findAnnoucement(announcementWhereUniqueInput: Prisma.AnnouncementWhereUniqueInput): Promise<Announcement | null> {
+    return this.prisma.announcement.findUnique({where: announcementWhereUniqueInput});
+  }
 }

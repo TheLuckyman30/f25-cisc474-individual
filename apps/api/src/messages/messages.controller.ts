@@ -1,4 +1,4 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Param } from "@nestjs/common";
 import { Message as MessageModel } from "@repo/database";
 import { MessagesService } from "./messages.service";
 
@@ -9,5 +9,10 @@ export class MessagesController {
     @Get()
     async findAll(): Promise<MessageModel[]> {
         return this.messagesService.findAllMessages({});
+    }
+
+    @Get(':id')
+    async findMessageById(@Param('id') id: string): Promise<MessageModel> {
+        return this.messagesService.findMessage({id: id})
     }
 }

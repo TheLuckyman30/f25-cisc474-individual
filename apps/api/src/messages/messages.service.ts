@@ -16,4 +16,8 @@ export class MessagesService {
     const {skip, take, cursor, where, orderBy} = params;
     return this.prisma.message.findMany({skip, take, cursor, where, orderBy});
   }
+
+  async findMessage(messageWhereUniqueInput: Prisma.MessageWhereUniqueInput): Promise<Message | null> {
+    return this.prisma.message.findUnique({where: messageWhereUniqueInput})
+  }
 }

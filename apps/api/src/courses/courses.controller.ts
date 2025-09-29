@@ -1,4 +1,4 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Param } from "@nestjs/common";
 import { CoursesService } from "./courses.service";
 import { Course as CourseModel } from "@repo/database";
 
@@ -9,5 +9,10 @@ export class CoursesController {
     @Get()
     async findAll(): Promise<CourseModel[]> {
         return this.coursesService.findAllCourses({});
+    }
+
+    @Get(':id')
+    async findCourseById(@Param('id') id: string): Promise<CourseModel> {
+        return this.coursesService.findCourse({id: id})
     }
 }
