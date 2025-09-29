@@ -5,7 +5,7 @@ import { CoursesModule } from './courses/courses.module';
 import { AssignmentsModule } from './assignments/assingments.module';
 import { UsersModule } from './users/users.model';
 import { SubmissionsModule } from './submissions/submissions.module';
-import { AnnoucementsModule } from './annoucements/announcements.module';
+import { AnnoucementsModule } from './announcements/announcements.module';
 import { MessagesModule } from './messages/messages.module';
 import { GradesModule } from './grades/grades.module';
 import { EnrollmentsModule } from './enrollments/enrollment.module';
