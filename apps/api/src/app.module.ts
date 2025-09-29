@@ -18,7 +18,8 @@ import { EnrollmentsModule } from './enrollments/enrollment.module';
     SubmissionsModule,
     AnnoucementsModule,
     MessagesModule,
-    GradesModule, EnrollmentsModule
+    GradesModule,
+    EnrollmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
