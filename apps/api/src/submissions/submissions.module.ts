@@ -3,7 +3,6 @@ import { PrismaService } from 'src/prisma.service';
 import { SubmissionsController } from './submissions.controller';
 import { SubmissionsService } from './submissions.service';
 
-
 @Module({
   controllers: [SubmissionsController],
   providers: [SubmissionsService, PrismaService],

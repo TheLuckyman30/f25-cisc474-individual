@@ -13,11 +13,21 @@ export class SubmissionsService {
     where?: Prisma.SubmissionWhereInput;
     orderBy?: Prisma.SubmissionOrderByWithRelationInput;
   }): Promise<Submission[]> {
-    const {skip, take, cursor, where, orderBy} = params;
-    return this.prisma.submission.findMany({skip, take, cursor, where, orderBy});
+    const { skip, take, cursor, where, orderBy } = params;
+    return this.prisma.submission.findMany({
+      skip,
+      take,
+      cursor,
+      where,
+      orderBy,
+    });
   }
 
-  async findSubmission(submissionWhereUniqueInput: Prisma.SubmissionWhereUniqueInput): Promise<Submission | null> {
-    return this.prisma.submission.findUnique({where: submissionWhereUniqueInput});
+  async findSubmission(
+    submissionWhereUniqueInput: Prisma.SubmissionWhereUniqueInput,
+  ): Promise<Submission | null> {
+    return this.prisma.submission.findUnique({
+      where: submissionWhereUniqueInput,
+    });
   }
 }

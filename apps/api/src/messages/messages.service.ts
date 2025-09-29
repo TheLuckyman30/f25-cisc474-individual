@@ -11,13 +11,15 @@ export class MessagesService {
     take?: number;
     cursor?: Prisma.MessageWhereUniqueInput;
     where?: Prisma.MessageWhereInput;
-    orderBy?: Prisma.MessageOrderByWithRelationInput
+    orderBy?: Prisma.MessageOrderByWithRelationInput;
   }): Promise<Message[]> {
-    const {skip, take, cursor, where, orderBy} = params;
-    return this.prisma.message.findMany({skip, take, cursor, where, orderBy});
+    const { skip, take, cursor, where, orderBy } = params;
+    return this.prisma.message.findMany({ skip, take, cursor, where, orderBy });
   }
 
-  async findMessage(messageWhereUniqueInput: Prisma.MessageWhereUniqueInput): Promise<Message | null> {
-    return this.prisma.message.findUnique({where: messageWhereUniqueInput})
+  async findMessage(
+    messageWhereUniqueInput: Prisma.MessageWhereUniqueInput,
+  ): Promise<Message | null> {
+    return this.prisma.message.findUnique({ where: messageWhereUniqueInput });
   }
 }

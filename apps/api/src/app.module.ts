@@ -10,7 +10,15 @@ import { MessagesModule } from './messages/messages.module';
 import { GradesModule } from './grades/grades.module';
 
 @Module({
-  imports: [CoursesModule, AssignmentsModule, UsersModule, SubmissionsModule, AnnoucementsModule, MessagesModule, GradesModule],
+  imports: [
+    CoursesModule,
+    AssignmentsModule,
+    UsersModule,
+    SubmissionsModule,
+    AnnoucementsModule,
+    MessagesModule,
+    GradesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

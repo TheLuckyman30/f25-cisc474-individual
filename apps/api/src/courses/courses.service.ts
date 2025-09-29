@@ -13,11 +13,13 @@ export class CoursesService {
     where?: Prisma.CourseWhereInput;
     orderBy?: Prisma.CourseOrderByWithRelationInput;
   }): Promise<Course[]> {
-    const {skip, take, cursor, where, orderBy} = params;
-    return this.prisma.course.findMany({skip, take, cursor, where, orderBy});
+    const { skip, take, cursor, where, orderBy } = params;
+    return this.prisma.course.findMany({ skip, take, cursor, where, orderBy });
   }
 
-  async findCourse(courseWhereUniqueInput: Prisma.CourseWhereUniqueInput): Promise<Course | null> {
-    return this.prisma.course.findUnique({where: courseWhereUniqueInput});
+  async findCourse(
+    courseWhereUniqueInput: Prisma.CourseWhereUniqueInput,
+  ): Promise<Course | null> {
+    return this.prisma.course.findUnique({ where: courseWhereUniqueInput });
   }
 }

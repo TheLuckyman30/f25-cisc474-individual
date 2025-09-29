@@ -13,11 +13,21 @@ export class AssignmentsService {
     where?: Prisma.AssignmentWhereInput;
     orderBy?: Prisma.AssignmentOrderByWithRelationInput;
   }): Promise<Assignment[]> {
-    const {skip, take, cursor, where, orderBy} = params;
-    return this.prisma.assignment.findMany({skip, take, cursor, where, orderBy});
+    const { skip, take, cursor, where, orderBy } = params;
+    return this.prisma.assignment.findMany({
+      skip,
+      take,
+      cursor,
+      where,
+      orderBy,
+    });
   }
 
-  async findAssignment(assignmentWhereUniqueInput: Prisma.AssignmentWhereUniqueInput): Promise<Assignment | null> {
-    return this.prisma.assignment.findUnique({where: assignmentWhereUniqueInput})
+  async findAssignment(
+    assignmentWhereUniqueInput: Prisma.AssignmentWhereUniqueInput,
+  ): Promise<Assignment | null> {
+    return this.prisma.assignment.findUnique({
+      where: assignmentWhereUniqueInput,
+    });
   }
 }

@@ -11,13 +11,23 @@ export class AnnoucementsService {
     take?: number;
     cursor?: Prisma.AnnouncementWhereUniqueInput;
     where?: Prisma.AnnouncementWhereInput;
-    orderBy?: Prisma.AnnouncementOrderByWithRelationInput
+    orderBy?: Prisma.AnnouncementOrderByWithRelationInput;
   }): Promise<Announcement[]> {
-    const {skip, take, cursor, where, orderBy} = params;
-    return this.prisma.announcement.findMany({skip, take, cursor, where, orderBy});
+    const { skip, take, cursor, where, orderBy } = params;
+    return this.prisma.announcement.findMany({
+      skip,
+      take,
+      cursor,
+      where,
+      orderBy,
+    });
   }
 
-  async findAnnoucement(announcementWhereUniqueInput: Prisma.AnnouncementWhereUniqueInput): Promise<Announcement | null> {
-    return this.prisma.announcement.findUnique({where: announcementWhereUniqueInput});
+  async findAnnoucement(
+    announcementWhereUniqueInput: Prisma.AnnouncementWhereUniqueInput,
+  ): Promise<Announcement | null> {
+    return this.prisma.announcement.findUnique({
+      where: announcementWhereUniqueInput,
+    });
   }
 }

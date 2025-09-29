@@ -13,11 +13,13 @@ export class UsersService {
     where?: Prisma.UserWhereInput;
     orderBy?: Prisma.UserOrderByWithRelationInput;
   }): Promise<User[]> {
-    const {skip, take, cursor, where, orderBy} = params;
-    return this.prisma.user.findMany({skip, take, cursor, where, orderBy});
+    const { skip, take, cursor, where, orderBy } = params;
+    return this.prisma.user.findMany({ skip, take, cursor, where, orderBy });
   }
 
-  async findUser(userWhereUniqueInput: Prisma.UserWhereUniqueInput): Promise<User | null> {
-    return this.prisma.user.findUnique({where: userWhereUniqueInput});
+  async findUser(
+    userWhereUniqueInput: Prisma.UserWhereUniqueInput,
+  ): Promise<User | null> {
+    return this.prisma.user.findUnique({ where: userWhereUniqueInput });
   }
 }
