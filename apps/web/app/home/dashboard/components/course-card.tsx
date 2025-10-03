@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { Course } from '../../../temp-data/temp-interfaces';
+import { GetCourseDto } from '@repo/api/courses/dto/get-course.dto';
 import { MoveRight } from 'lucide-react';
 
 interface CourseCardProps {
-  course: Course;
+  course: GetCourseDto;
 }
 
 function CourseCard({ course }: CourseCardProps) {
