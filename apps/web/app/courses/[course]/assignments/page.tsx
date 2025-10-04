@@ -1,24 +1,20 @@
-import { courses } from '../../../temp-data/temp-data.json';
-import AssignmentCard from './components/assingment-card';
+import Assignments from './components/assignments';
 
-async function CourseAssignments({
+async function getAssignmentsForCourse(courseId: string) {
+  return fetch(
+    process.env.BACKEND_URL + `/courses/${courseId}/assignments`,
+  ).then((response) => response.json());
+}
+
+async function AssignmentsPage({
   params,
 }: {
   params: Promise<{ course: string }>;
 }) {
-  const { course } = await params;
-  const selectedCourse = courses.find((c) => c.id === course);
-  if (selectedCourse) {
-    return (
-      <div className="mt-30 ml-30">
-        <div className="grid grid-cols-6 gap-20">
-          {selectedCourse.assignmentIds.map((id, index) => (
-            <AssignmentCard key={index} assignmentId={id}></AssignmentCard>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  const courseId = (await params).course;
+  const assignments = getAssignmentsForCourse(courseId);
+
+  return <Assignments assignments={assignments} />;
 }
 
-export default CourseAssignments;
+export default AssignmentsPage;
