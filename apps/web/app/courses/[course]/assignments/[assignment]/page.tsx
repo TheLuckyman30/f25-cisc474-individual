@@ -1,26 +1,20 @@
-import { assignments } from '../../../../temp-data/temp-data.json';
+import Assignment from './components/assignment';
 
-async function Assignment({
+async function getAssignmentById(assignmentId: string) {
+  return fetch(process.env.BACKEND_URL + `/assignments/${assignmentId}`).then(
+    (response) => response.json(),
+  );
+}
+
+async function AssignmentPage({
   params,
 }: {
   params: Promise<{ assignment: string }>;
 }) {
-  const { assignment } = await params;
-  const selectedAssignment = assignments.find((a) => a.id === assignment);
+  const assignmentId = (await params).assignment;
+  const assignment = getAssignmentById(assignmentId);
 
-  if (selectedAssignment) {
-    return (
-      <div className="mt-30 ml-30">
-        <div className="font-bold text-3xl">{selectedAssignment.name}</div>
-        <div className="text-2xl flex gap-5">
-          <div>{`Due Date: ${selectedAssignment.dueDate}`}</div>
-          <div>Submission Type: PDF</div>
-        </div>
-        <div className="text-2xl">Content</div>
-        <div>{selectedAssignment.description}</div>
-      </div>
-    );
-  }
+  return <Assignment assignment={assignment} />;
 }
 
-export default Assignment;
+export default AssignmentPage;
