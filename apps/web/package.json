@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@repo/database": "*",
+    "@repo/api": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@tailwindcss/postcss": "^4.1.13",
