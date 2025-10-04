@@ -1,18 +1,16 @@
-import { courses } from '../../../temp-data/temp-data.json';
+import CourseHome from './components/course-home';
 
-async function Course({ params }: { params: Promise<{ course: string }> }) {
-  const { course } = await params;
-  const selectedCourse = courses.find((c) => c.id === course);
-
-  if (selectedCourse) {
-    return (
-      <div className="mt-30 ml-30">
-        <div className="font-bold text-3xl">{selectedCourse.name}</div>
-        <div className="text-2xl">Description</div>
-        <div>{selectedCourse.description}</div>
-      </div>
-    );
-  }
+async function getCourse(courseId: string) {
+  return fetch(process.env.BACKEND_URL + `/courses/${courseId}`).then(
+    (response) => response.json(),
+  );
 }
 
-export default Course;
+async function CoursePage({ params }: { params: Promise<{ course: string }> }) {
+  const courseId = (await params).course;
+  const course = getCourse(courseId);
+
+  return <CourseHome course={course} />;
+}
+
+export default CoursePage;
