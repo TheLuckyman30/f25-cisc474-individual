@@ -1,3 +1,4 @@
+'use client';
 import { GetCourseDto } from '@repo/api/courses/dto/get-course.dto';
 import { use } from 'react';
 
