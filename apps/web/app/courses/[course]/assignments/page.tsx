@@ -1,4 +1,5 @@
 import Assignments from './components/assignments';
+export const dynamic = 'force-dynamic';
 
 async function getAssignmentsForCourse(courseId: string) {
   return fetch(

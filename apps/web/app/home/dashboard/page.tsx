@@ -1,4 +1,5 @@
 import Dashboard from './components/dashboard';
+export const dynamic = 'force-dynamic';
 
 async function getCourses() {
   return fetch(process.env.BACKEND_URL + '/courses').then((response) =>
