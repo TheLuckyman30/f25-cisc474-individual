@@ -1,3 +1,4 @@
+'use client';
 import { GetAssignmentDto } from '@repo/api/assignments/dto/get-assignment.dto';
 import { use } from 'react';
 
