@@ -13,7 +13,7 @@ async function getAssignments() {
   );
 }
 
-async function DashboardPage() {
+function DashboardPage() {
   const courses = getCourses();
   const assignments = getAssignments();
 
