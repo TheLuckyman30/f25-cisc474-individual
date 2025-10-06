@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Dashboard from './components/dashboard';
 
 async function getCourses() {
@@ -16,7 +17,11 @@ async function DashboardPage() {
   const courses = getCourses();
   const assignments = getAssignments();
 
-  return <Dashboard courses={courses} assignments={assignments} />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Dashboard courses={courses} assignments={assignments} />
+    </Suspense>
+  );
 }
 
 export default DashboardPage;
