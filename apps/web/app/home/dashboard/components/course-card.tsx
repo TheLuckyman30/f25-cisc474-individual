@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { GetCourseDto } from '@repo/api/courses/dto/get-course.dto';
 import { MoveRight } from 'lucide-react';
