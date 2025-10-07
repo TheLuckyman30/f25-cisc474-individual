@@ -1,5 +1,4 @@
 import CourseHome from './components/course-home';
-export const dynamic = 'force-dynamic';
 
 async function getCourse(courseId: string) {
   return fetch(process.env.BACKEND_URL + `/courses/${courseId}`).then(

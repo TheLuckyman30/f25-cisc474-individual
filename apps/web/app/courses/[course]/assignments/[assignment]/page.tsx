@@ -1,5 +1,4 @@
 import Assignment from './components/assignment';
-export const dynamic = 'force-dynamic';
 
 async function getAssignmentById(assignmentId: string) {
   return fetch(process.env.BACKEND_URL + `/assignments/${assignmentId}`).then(

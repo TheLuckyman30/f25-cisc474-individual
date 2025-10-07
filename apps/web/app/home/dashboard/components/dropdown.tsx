@@ -14,7 +14,6 @@ function Dropdown({
 }: DropdownProps) {
   function changeInfoShowed(event: ChangeEvent<HTMLSelectElement>) {
     const newInfo = event.currentTarget.value;
-    console.log(newInfo);
     setSelectedItem(newInfo);
   }
 
