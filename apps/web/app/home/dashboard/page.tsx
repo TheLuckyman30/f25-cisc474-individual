@@ -1,9 +1,9 @@
 import Dashboard from './components/dashboard';
 
 async function getCourses() {
-  return fetch(process.env.BACKEND_URL + '/courses').then((response) =>
-    response.json(),
-  );
+  return fetch(process.env.BACKEND_URL + '/courses', {
+    cache: 'no-store',
+  }).then((response) => response.json());
 }
 
 async function getAssignments() {
