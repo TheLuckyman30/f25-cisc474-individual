@@ -7,9 +7,9 @@ async function getCourses() {
 }
 
 async function getAssignments() {
-  return fetch(process.env.BACKEND_URL + '/assignments').then((resposne) =>
-    resposne.json(),
-  );
+  return fetch(process.env.BACKEND_URL + '/assignments', {
+    cache: 'no-store',
+  }).then((resposne) => resposne.json());
 }
 
 async function DashboardPage() {
