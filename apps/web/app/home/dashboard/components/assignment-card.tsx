@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { GetAssignmentDto } from '@repo/api/assignments/dto/get-assignment.dto';
 import { GetCourseDto } from '@repo/api/courses/dto/get-course.dto';
