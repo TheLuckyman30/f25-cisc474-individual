@@ -1,10 +1,8 @@
 /// <reference types="vite/client" />
-import type { ReactNode } from 'react';
 import {
-  Outlet,
-  createRootRouteWithContext,
   HeadContent,
   Scripts,
+  createRootRouteWithContext,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { TanStackDevtools } from '@tanstack/react-devtools';
@@ -47,7 +45,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="bg-gray-100">
         {children}
         <TanStackDevtools
           config={{
