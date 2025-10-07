@@ -13,8 +13,148 @@ generator client {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
+  id                String         @id @default(uuid())
+  firstName         String
+  lastName          String
+  email             String         @unique
+  emailVerified     DateTime?
+  password          String
+  userSchoolId      Int            @unique
+  ownedAssignments  Assignment[]
+  ownedCourses      Course[]
+  enrollments       Enrollment[]
+  submissions       Submission[]   @relation(name: "SubmittedBy")
+  submissionsGraded Submission[]   @relation(name: "GradedBy")
+  comments          Comment[]
+  conversations     Conversation[] @relation(name: "ConversationParticipants")
+  ownedConversation Conversation[] @relation(name: "ConversationOwner")
+  messages          Message[]
+  sentAnnouncements Announcement[]
+}
+
+model Course {
+  id            String         @id @default(uuid())
+  owner         User           @relation(fields: [ownerId], references: [id])
+  ownerId       String
+  name          String
+  description   String
+  enrollments   Enrollment[]
+  assignments   Assignment[]
+  submissions   Submission[]
+  comments      Comment[]
+  announcements Announcement[]
+}
+
+model Enrollment {
+  id       String @id @default(uuid())
+  user     User   @relation(fields: [userId], references: [id])
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId String
+  userId   String
+  role     Role
+}
+
+model Assignment {
+  id             String         @id @default(uuid())
+  course         Course         @relation(fields: [courseId], references: [id])
+  assignedBy     User           @relation(fields: [assignedById], references: [id])
+  assignedById   String
+  courseId       String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime?      @updatedAt
+  title          String
+  description    String
+  dueDate        DateTime
+  openUntilDate  DateTime
+  isOpen         Boolean
+  visible        Boolean
+  submissionType SubmissionType @default(TEXT_ENTRY)
+  submissions    Submission[]
+}
+
+model Submission {
+  id                      String     @id @default(uuid())
+  submitter               User       @relation(name: "SubmittedBy", fields: [submitterId], references: [id])
+  gradedBy                User?      @relation(name: "GradedBy", fields: [gradedById], references: [id])
+  course                  Course     @relation(fields: [courseId], references: [id])
+  assignment              Assignment @relation(fields: [assignmentId], references: [id])
+  submitterId             String
+  gradedById              String?
+  courseId                String
+  assignmentId            String
+  submittedAt             DateTime   @default(now())
+  submissionFileReference String? // Not sur if I want files to be stored in the DB or not
+  submissionTextEntry     String?
+  isLate                  Boolean
+  grade                   Grade?
+  comments                Comment[]
+}
+
+model Comment {
+  id           String     @id @default(uuid())
+  commentor    User       @relation(fields: [commentorId], references: [id])
+  submission   Submission @relation(fields: [submissionId], references: [id])
+  course       Course     @relation(fields: [courseId], references: [id])
+  commentorId  String
+  submissionId String
+  courseId     String
+  content      String
+  sentAt       DateTime   @default(now())
+  updatedAt    DateTime?  @updatedAt
+}
+
+model Grade {
+  id           String     @id @default(uuid())
+  submission   Submission @relation(fields: [submissionId], references: [id])
+  submissionId String     @unique
+  numberGrade  Float
+  visible      Boolean
+  gradedAt     DateTime
+  updatedAt    DateTime?  @updatedAt
+}
+
+model Conversation {
+  id           String    @id @default(uuid())
+  owner        User      @relation(name: "ConversationOwner", fields: [ownerId], references: [id])
+  ownerId      String
+  createdAt    DateTime
+  title        String?
+  description  String?
+  participants User[]    @relation(name: "ConversationParticipants")
+  messages     Message[]
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  sentBy         User         @relation(fields: [sentById], references: [id])
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  sentById       String
+  conversationId String
+  content        String
+  sentAt         DateTime     @default(now())
+  updatedAt      DateTime?    @updatedAt
+}
+
+model Announcement {
+  id       String   @id @default(uuid())
+  sentBy   User     @relation(fields: [sentById], references: [id])
+  course   Course   @relation(fields: [courseId], references: [id])
+  sentById String
+  courseId String
+  title    String
+  content  String
+  sentAt   DateTime @default(now())
+}
+
+enum Role {
+  STUDENT
+  INSTRUCTOR
+  TA
+  ADMIN
+}
+
+enum SubmissionType {
+  PDF
+  DOCX
+  TEXT_ENTRY
 }
