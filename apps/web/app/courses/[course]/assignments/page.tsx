@@ -6,12 +6,8 @@ async function getAssignmentsForCourse(courseId: string) {
   ).then((response) => response.json());
 }
 
-async function AssignmentsPage({
-  params,
-}: {
-  params: Promise<{ course: string }>;
-}) {
-  const courseId = (await params).course;
+async function AssignmentsPage({ params }: { params: { course: string } }) {
+  const courseId = params.course;
   const assignments = getAssignmentsForCourse(courseId);
 
   return <Assignments assignments={assignments} />;
