@@ -1,7 +1,9 @@
 @import "tailwindcss";
+@import '@fontsource-variable/roboto';
 
 html,
 body {
+    --font-sans: 'Roboto Variable', sans-serif;
     width: 100vw;
     height: 100vh;
     margin: 0;
