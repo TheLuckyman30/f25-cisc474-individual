@@ -1,22 +1,16 @@
 import { Link, useParams } from '@tanstack/react-router';
-import { useState } from 'react';
 
 function CourseNavBar() {
-  const [currentPage, setCurrentPage] = useState<number>(1);
   const { courseId } = useParams({ strict: false });
 
   const COURSE_NAV_LINKS = [
     { name: 'Dashboard', link: '/home/dashboard' },
-    { name: 'Home', link: `/courses/${courseId}/course-home` },
-    { name: 'Assignments', link: `/courses/${courseId}/assignments` },
-    { name: 'Files', link: `/courses/${courseId}/files` },
-    { name: 'Media', link: `/courses/${courseId}/media` },
-    { name: 'Grade', link: `/courses/${courseId}/grade` },
+    { name: 'Home', link: '/courses/$courseId/course-home' },
+    { name: 'Assignments', link: '/courses/$courseId/assignments' },
+    { name: 'Files', link: '/courses/$courseId/files' },
+    { name: 'Media', link: '/courses/$courseId/media' },
+    { name: 'Grades', link: '/courses/$courseId/grades' },
   ];
-
-  function setNewPage(index: number) {
-    setCurrentPage(index);
-  }
 
   return (
     <div className="flex justify-center">
@@ -24,9 +18,9 @@ function CourseNavBar() {
         {COURSE_NAV_LINKS.map((link, index) => (
           <Link
             to={link.link}
+            params={{ courseId: courseId }}
             key={index}
-            onClick={() => setNewPage(index)}
-            className={`p-1 hover:-translate-y-1 duration-200 rounded-md ${index === currentPage ? ' bg-blue-300' : ''}`}
+            className={`p-1 hover:-translate-y-1 duration-200 rounded-md [&.active]:bg-blue-300`}
           >
             {link.name}
           </Link>

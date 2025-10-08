@@ -16,6 +16,9 @@ import { Route as HomeMessagesIndexRouteImport } from './routes/home/messages/in
 import { Route as HomeHelpIndexRouteImport } from './routes/home/help/index'
 import { Route as HomeDashboardIndexRouteImport } from './routes/home/dashboard/index'
 import { Route as HomeCalendarIndexRouteImport } from './routes/home/calendar/index'
+import { Route as CoursesCourseIdMediaIndexRouteImport } from './routes/courses/$courseId/media/index'
+import { Route as CoursesCourseIdGradesIndexRouteImport } from './routes/courses/$courseId/grades/index'
+import { Route as CoursesCourseIdFilesIndexRouteImport } from './routes/courses/$courseId/files/index'
 import { Route as CoursesCourseIdCourseHomeIndexRouteImport } from './routes/courses/$courseId/course-home/index'
 import { Route as CoursesCourseIdAssignmentsIndexRouteImport } from './routes/courses/$courseId/assignments/index'
 import { Route as CoursesCourseIdAssignmentsAssignmentIdIndexRouteImport } from './routes/courses/$courseId/assignments/$assignmentId/index'
@@ -55,6 +58,24 @@ const HomeCalendarIndexRoute = HomeCalendarIndexRouteImport.update({
   path: '/calendar/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const CoursesCourseIdMediaIndexRoute =
+  CoursesCourseIdMediaIndexRouteImport.update({
+    id: '/media/',
+    path: '/media/',
+    getParentRoute: () => CoursesCourseIdRouteRoute,
+  } as any)
+const CoursesCourseIdGradesIndexRoute =
+  CoursesCourseIdGradesIndexRouteImport.update({
+    id: '/grades/',
+    path: '/grades/',
+    getParentRoute: () => CoursesCourseIdRouteRoute,
+  } as any)
+const CoursesCourseIdFilesIndexRoute =
+  CoursesCourseIdFilesIndexRouteImport.update({
+    id: '/files/',
+    path: '/files/',
+    getParentRoute: () => CoursesCourseIdRouteRoute,
+  } as any)
 const CoursesCourseIdCourseHomeIndexRoute =
   CoursesCourseIdCourseHomeIndexRouteImport.update({
     id: '/course-home/',
@@ -84,6 +105,9 @@ export interface FileRoutesByFullPath {
   '/home/messages': typeof HomeMessagesIndexRoute
   '/courses/$courseId/assignments': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
+  '/courses/$courseId/files': typeof CoursesCourseIdFilesIndexRoute
+  '/courses/$courseId/grades': typeof CoursesCourseIdGradesIndexRoute
+  '/courses/$courseId/media': typeof CoursesCourseIdMediaIndexRoute
   '/courses/$courseId/assignments/$assignmentId': typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 export interface FileRoutesByTo {
@@ -96,6 +120,9 @@ export interface FileRoutesByTo {
   '/home/messages': typeof HomeMessagesIndexRoute
   '/courses/$courseId/assignments': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
+  '/courses/$courseId/files': typeof CoursesCourseIdFilesIndexRoute
+  '/courses/$courseId/grades': typeof CoursesCourseIdGradesIndexRoute
+  '/courses/$courseId/media': typeof CoursesCourseIdMediaIndexRoute
   '/courses/$courseId/assignments/$assignmentId': typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 export interface FileRoutesById {
@@ -109,6 +136,9 @@ export interface FileRoutesById {
   '/home/messages/': typeof HomeMessagesIndexRoute
   '/courses/$courseId/assignments/': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home/': typeof CoursesCourseIdCourseHomeIndexRoute
+  '/courses/$courseId/files/': typeof CoursesCourseIdFilesIndexRoute
+  '/courses/$courseId/grades/': typeof CoursesCourseIdGradesIndexRoute
+  '/courses/$courseId/media/': typeof CoursesCourseIdMediaIndexRoute
   '/courses/$courseId/assignments/$assignmentId/': typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 export interface FileRouteTypes {
@@ -123,6 +153,9 @@ export interface FileRouteTypes {
     | '/home/messages'
     | '/courses/$courseId/assignments'
     | '/courses/$courseId/course-home'
+    | '/courses/$courseId/files'
+    | '/courses/$courseId/grades'
+    | '/courses/$courseId/media'
     | '/courses/$courseId/assignments/$assignmentId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -135,6 +168,9 @@ export interface FileRouteTypes {
     | '/home/messages'
     | '/courses/$courseId/assignments'
     | '/courses/$courseId/course-home'
+    | '/courses/$courseId/files'
+    | '/courses/$courseId/grades'
+    | '/courses/$courseId/media'
     | '/courses/$courseId/assignments/$assignmentId'
   id:
     | '__root__'
@@ -147,6 +183,9 @@ export interface FileRouteTypes {
     | '/home/messages/'
     | '/courses/$courseId/assignments/'
     | '/courses/$courseId/course-home/'
+    | '/courses/$courseId/files/'
+    | '/courses/$courseId/grades/'
+    | '/courses/$courseId/media/'
     | '/courses/$courseId/assignments/$assignmentId/'
   fileRoutesById: FileRoutesById
 }
@@ -207,6 +246,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeCalendarIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/courses/$courseId/media/': {
+      id: '/courses/$courseId/media/'
+      path: '/media'
+      fullPath: '/courses/$courseId/media'
+      preLoaderRoute: typeof CoursesCourseIdMediaIndexRouteImport
+      parentRoute: typeof CoursesCourseIdRouteRoute
+    }
+    '/courses/$courseId/grades/': {
+      id: '/courses/$courseId/grades/'
+      path: '/grades'
+      fullPath: '/courses/$courseId/grades'
+      preLoaderRoute: typeof CoursesCourseIdGradesIndexRouteImport
+      parentRoute: typeof CoursesCourseIdRouteRoute
+    }
+    '/courses/$courseId/files/': {
+      id: '/courses/$courseId/files/'
+      path: '/files'
+      fullPath: '/courses/$courseId/files'
+      preLoaderRoute: typeof CoursesCourseIdFilesIndexRouteImport
+      parentRoute: typeof CoursesCourseIdRouteRoute
+    }
     '/courses/$courseId/course-home/': {
       id: '/courses/$courseId/course-home/'
       path: '/course-home'
@@ -252,12 +312,18 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 interface CoursesCourseIdRouteRouteChildren {
   CoursesCourseIdAssignmentsIndexRoute: typeof CoursesCourseIdAssignmentsIndexRoute
   CoursesCourseIdCourseHomeIndexRoute: typeof CoursesCourseIdCourseHomeIndexRoute
+  CoursesCourseIdFilesIndexRoute: typeof CoursesCourseIdFilesIndexRoute
+  CoursesCourseIdGradesIndexRoute: typeof CoursesCourseIdGradesIndexRoute
+  CoursesCourseIdMediaIndexRoute: typeof CoursesCourseIdMediaIndexRoute
   CoursesCourseIdAssignmentsAssignmentIdIndexRoute: typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 
 const CoursesCourseIdRouteRouteChildren: CoursesCourseIdRouteRouteChildren = {
   CoursesCourseIdAssignmentsIndexRoute: CoursesCourseIdAssignmentsIndexRoute,
   CoursesCourseIdCourseHomeIndexRoute: CoursesCourseIdCourseHomeIndexRoute,
+  CoursesCourseIdFilesIndexRoute: CoursesCourseIdFilesIndexRoute,
+  CoursesCourseIdGradesIndexRoute: CoursesCourseIdGradesIndexRoute,
+  CoursesCourseIdMediaIndexRoute: CoursesCourseIdMediaIndexRoute,
   CoursesCourseIdAssignmentsAssignmentIdIndexRoute:
     CoursesCourseIdAssignmentsAssignmentIdIndexRoute,
 }

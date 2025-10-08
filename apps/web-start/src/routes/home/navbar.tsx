@@ -1,9 +1,8 @@
-import { Link, useLocation } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 
 const NAV_LINKS: Array<string> = ['Dashboard', 'Calendar', 'Messages', 'Help'];
 
 function NavBar() {
-  const { pathname } = useLocation();
   return (
     <div className="flex justify-between items-center fixed w-full h-fit p-5 bg-white/80 shadow-md backdrop-blur-md">
       <div>Site Page</div>
@@ -13,7 +12,9 @@ function NavBar() {
           return (
             <Link
               to={newLink}
-              className={`hover:text-blue-400 duration-75 cursor-pointer ${newLink === pathname ? 'text-blue-400' : ''}`}
+              className={
+                'hover:text-blue-400 duration-75 cursor-pointer [&.active]:text-blue-400'
+              }
               key={index}
             >
               {link}
