@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -16,9 +16,12 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="absolute p-1 top-0 right-0 m-5 border rounded-md hover:-translate-y-2 duration-200">
+      <Link
+        to="/home/dashboard"
+        className="absolute p-1 top-0 right-0 m-5 border rounded-md hover:-translate-y-2 duration-200"
+      >
         Login | Signup
-      </div>
+      </Link>
     </div>
   );
 }
