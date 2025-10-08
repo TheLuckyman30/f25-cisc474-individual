@@ -1,4 +1,5 @@
 import { MoveRight } from 'lucide-react';
+import { Link } from '@tanstack/react-router';
 import type { Course } from '../../../../interfaces/course';
 import type { Assignment } from '../../../../interfaces/assignment';
 
@@ -15,20 +16,24 @@ function AssingmentCard({ assignment, course }: AssignmentCardProps) {
         <hr className="border-t-gray-300"></hr>
         <div className="flex gap-2 justify-between ">
           <div className="font-bold text-xl">{assignment.title}</div>
-          <div
-            // href={`/courses/${course.id}/assignments/${assignment.id}`}
+          <Link
+            to={'/courses/$courseId/assignments/$assignmentId'}
+            params={{ courseId: course.id, assignmentId: assignment.id }}
             className="flex h-fit w-fit bg-blue-400 rounded-md p-1 hover:scale-110 duration-100"
           >
             <MoveRight color="white" />
-          </div>
+          </Link>
         </div>
         <div>{assignment.description}</div>
       </div>
       <div className="flex w-full justify-center">
         <div className="flex bg-blue-400 hover:scale-105 duration-100 rounded-md text-white gap-2.5 font-bold p-1 cursor-pointer">
-          <div /* href={`/courses/${course.id}/course-home`}*/>
+          <Link
+            to={'/courses/$courseId/course-home'}
+            params={{ courseId: course.id }}
+          >
             Go to Course
-          </div>
+          </Link>
           <MoveRight color="white" />
         </div>
       </div>

@@ -8,9 +8,10 @@ interface AssignmentCardProps {
 function CourseAssignmentCard({ assignment }: AssignmentCardProps) {
   return (
     <div className="border border-red-500 p-2 rounded-md">
-      <div
-      // to={`assignments/${assignment.id}`}
-      >{`Assignment Name: ${assignment.title}`}</div>
+      <Link
+        to={'/courses/$courseId/assignments/$assignmentId'}
+        params={{ courseId: assignment.courseId, assignmentId: assignment.id }}
+      >{`Assignment Name: ${assignment.title}`}</Link>
       <div>{`Content: ${assignment.description}`}</div>
     </div>
   );

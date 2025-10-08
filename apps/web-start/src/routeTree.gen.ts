@@ -18,6 +18,7 @@ import { Route as HomeDashboardIndexRouteImport } from './routes/home/dashboard/
 import { Route as HomeCalendarIndexRouteImport } from './routes/home/calendar/index'
 import { Route as CoursesCourseIdCourseHomeIndexRouteImport } from './routes/courses/$courseId/course-home/index'
 import { Route as CoursesCourseIdAssignmentsIndexRouteImport } from './routes/courses/$courseId/assignments/index'
+import { Route as CoursesCourseIdAssignmentsAssignmentIdIndexRouteImport } from './routes/courses/$courseId/assignments/$assignmentId/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/home',
@@ -66,6 +67,12 @@ const CoursesCourseIdAssignmentsIndexRoute =
     path: '/assignments/',
     getParentRoute: () => CoursesCourseIdRouteRoute,
   } as any)
+const CoursesCourseIdAssignmentsAssignmentIdIndexRoute =
+  CoursesCourseIdAssignmentsAssignmentIdIndexRouteImport.update({
+    id: '/assignments/$assignmentId/',
+    path: '/assignments/$assignmentId/',
+    getParentRoute: () => CoursesCourseIdRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -77,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/home/messages': typeof HomeMessagesIndexRoute
   '/courses/$courseId/assignments': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
+  '/courses/$courseId/assignments/$assignmentId': typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -88,6 +96,7 @@ export interface FileRoutesByTo {
   '/home/messages': typeof HomeMessagesIndexRoute
   '/courses/$courseId/assignments': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
+  '/courses/$courseId/assignments/$assignmentId': typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -100,6 +109,7 @@ export interface FileRoutesById {
   '/home/messages/': typeof HomeMessagesIndexRoute
   '/courses/$courseId/assignments/': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home/': typeof CoursesCourseIdCourseHomeIndexRoute
+  '/courses/$courseId/assignments/$assignmentId/': typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -113,6 +123,7 @@ export interface FileRouteTypes {
     | '/home/messages'
     | '/courses/$courseId/assignments'
     | '/courses/$courseId/course-home'
+    | '/courses/$courseId/assignments/$assignmentId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -124,6 +135,7 @@ export interface FileRouteTypes {
     | '/home/messages'
     | '/courses/$courseId/assignments'
     | '/courses/$courseId/course-home'
+    | '/courses/$courseId/assignments/$assignmentId'
   id:
     | '__root__'
     | '/'
@@ -135,6 +147,7 @@ export interface FileRouteTypes {
     | '/home/messages/'
     | '/courses/$courseId/assignments/'
     | '/courses/$courseId/course-home/'
+    | '/courses/$courseId/assignments/$assignmentId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -208,6 +221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesCourseIdAssignmentsIndexRouteImport
       parentRoute: typeof CoursesCourseIdRouteRoute
     }
+    '/courses/$courseId/assignments/$assignmentId/': {
+      id: '/courses/$courseId/assignments/$assignmentId/'
+      path: '/assignments/$assignmentId'
+      fullPath: '/courses/$courseId/assignments/$assignmentId'
+      preLoaderRoute: typeof CoursesCourseIdAssignmentsAssignmentIdIndexRouteImport
+      parentRoute: typeof CoursesCourseIdRouteRoute
+    }
   }
 }
 
@@ -232,11 +252,14 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 interface CoursesCourseIdRouteRouteChildren {
   CoursesCourseIdAssignmentsIndexRoute: typeof CoursesCourseIdAssignmentsIndexRoute
   CoursesCourseIdCourseHomeIndexRoute: typeof CoursesCourseIdCourseHomeIndexRoute
+  CoursesCourseIdAssignmentsAssignmentIdIndexRoute: typeof CoursesCourseIdAssignmentsAssignmentIdIndexRoute
 }
 
 const CoursesCourseIdRouteRouteChildren: CoursesCourseIdRouteRouteChildren = {
   CoursesCourseIdAssignmentsIndexRoute: CoursesCourseIdAssignmentsIndexRoute,
   CoursesCourseIdCourseHomeIndexRoute: CoursesCourseIdCourseHomeIndexRoute,
+  CoursesCourseIdAssignmentsAssignmentIdIndexRoute:
+    CoursesCourseIdAssignmentsAssignmentIdIndexRoute,
 }
 
 const CoursesCourseIdRouteRouteWithChildren =
