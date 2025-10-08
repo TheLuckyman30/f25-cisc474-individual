@@ -16,6 +16,7 @@ const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 
 function Dashboard() {
   const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
+
   const courses = useQuery<Array<Course>>({
     queryKey: ['courses'],
     queryFn: backendFetcher('/courses'),
