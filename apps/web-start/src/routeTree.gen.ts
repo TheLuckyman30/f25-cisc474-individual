@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HomeMessagesIndexRouteImport } from './routes/home/messages/index'
+import { Route as HomeHelpIndexRouteImport } from './routes/home/help/index'
 import { Route as HomeDashboardIndexRouteImport } from './routes/home/dashboard/index'
+import { Route as HomeCalendarIndexRouteImport } from './routes/home/calendar/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/home',
@@ -23,34 +26,77 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeMessagesIndexRoute = HomeMessagesIndexRouteImport.update({
+  id: '/messages/',
+  path: '/messages/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeHelpIndexRoute = HomeHelpIndexRouteImport.update({
+  id: '/help/',
+  path: '/help/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
 const HomeDashboardIndexRoute = HomeDashboardIndexRouteImport.update({
   id: '/dashboard/',
   path: '/dashboard/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeCalendarIndexRoute = HomeCalendarIndexRouteImport.update({
+  id: '/calendar/',
+  path: '/calendar/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
+  '/home/calendar': typeof HomeCalendarIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
+  '/home/help': typeof HomeHelpIndexRoute
+  '/home/messages': typeof HomeMessagesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
+  '/home/calendar': typeof HomeCalendarIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
+  '/home/help': typeof HomeHelpIndexRoute
+  '/home/messages': typeof HomeMessagesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
+  '/home/calendar/': typeof HomeCalendarIndexRoute
   '/home/dashboard/': typeof HomeDashboardIndexRoute
+  '/home/help/': typeof HomeHelpIndexRoute
+  '/home/messages/': typeof HomeMessagesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/home' | '/home/dashboard'
+  fullPaths:
+    | '/'
+    | '/home'
+    | '/home/calendar'
+    | '/home/dashboard'
+    | '/home/help'
+    | '/home/messages'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/home' | '/home/dashboard'
-  id: '__root__' | '/' | '/home' | '/home/dashboard/'
+  to:
+    | '/'
+    | '/home'
+    | '/home/calendar'
+    | '/home/dashboard'
+    | '/home/help'
+    | '/home/messages'
+  id:
+    | '__root__'
+    | '/'
+    | '/home'
+    | '/home/calendar/'
+    | '/home/dashboard/'
+    | '/home/help/'
+    | '/home/messages/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -74,6 +120,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home/messages/': {
+      id: '/home/messages/'
+      path: '/messages'
+      fullPath: '/home/messages'
+      preLoaderRoute: typeof HomeMessagesIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/home/help/': {
+      id: '/home/help/'
+      path: '/help'
+      fullPath: '/home/help'
+      preLoaderRoute: typeof HomeHelpIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/home/dashboard/': {
       id: '/home/dashboard/'
       path: '/dashboard'
@@ -81,15 +141,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeDashboardIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/calendar/': {
+      id: '/home/calendar/'
+      path: '/calendar'
+      fullPath: '/home/calendar'
+      preLoaderRoute: typeof HomeCalendarIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
   }
 }
 
 interface HomeRouteRouteChildren {
+  HomeCalendarIndexRoute: typeof HomeCalendarIndexRoute
   HomeDashboardIndexRoute: typeof HomeDashboardIndexRoute
+  HomeHelpIndexRoute: typeof HomeHelpIndexRoute
+  HomeMessagesIndexRoute: typeof HomeMessagesIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
+  HomeCalendarIndexRoute: HomeCalendarIndexRoute,
   HomeDashboardIndexRoute: HomeDashboardIndexRoute,
+  HomeHelpIndexRoute: HomeHelpIndexRoute,
+  HomeMessagesIndexRoute: HomeMessagesIndexRoute,
 }
 
 const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
