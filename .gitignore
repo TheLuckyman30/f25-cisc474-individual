@@ -65,6 +65,7 @@ pnpm-debug.log*
 *.launch
 .settings/
 *.sublime-workspace
+.vscode
 
 
 server/dist
