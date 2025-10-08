@@ -17,7 +17,11 @@ function AssignmentsPage() {
   });
 
   if (courseAssignments.isFetching) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center w-lvw min-h-lvh pt-[50vh]">
+        Loading Course Assignments...
+      </div>
+    );
   }
 
   return (

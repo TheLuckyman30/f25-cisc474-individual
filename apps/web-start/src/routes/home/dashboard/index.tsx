@@ -30,7 +30,11 @@ function Dashboard() {
   });
 
   if (courses.isFetching || assignments.isFetching) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center w-lvw min-h-lvh pt-[50vh]">
+        Loading Data...
+      </div>
+    );
   }
 
   return (
