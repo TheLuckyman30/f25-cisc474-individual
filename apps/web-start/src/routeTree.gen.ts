@@ -17,6 +17,7 @@ import { Route as HomeHelpIndexRouteImport } from './routes/home/help/index'
 import { Route as HomeDashboardIndexRouteImport } from './routes/home/dashboard/index'
 import { Route as HomeCalendarIndexRouteImport } from './routes/home/calendar/index'
 import { Route as CoursesCourseIdCourseHomeIndexRouteImport } from './routes/courses/$courseId/course-home/index'
+import { Route as CoursesCourseIdAssignmentsIndexRouteImport } from './routes/courses/$courseId/assignments/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/home',
@@ -59,6 +60,12 @@ const CoursesCourseIdCourseHomeIndexRoute =
     path: '/course-home/',
     getParentRoute: () => CoursesCourseIdRouteRoute,
   } as any)
+const CoursesCourseIdAssignmentsIndexRoute =
+  CoursesCourseIdAssignmentsIndexRouteImport.update({
+    id: '/assignments/',
+    path: '/assignments/',
+    getParentRoute: () => CoursesCourseIdRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/home/dashboard': typeof HomeDashboardIndexRoute
   '/home/help': typeof HomeHelpIndexRoute
   '/home/messages': typeof HomeMessagesIndexRoute
+  '/courses/$courseId/assignments': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
 }
 export interface FileRoutesByTo {
@@ -78,6 +86,7 @@ export interface FileRoutesByTo {
   '/home/dashboard': typeof HomeDashboardIndexRoute
   '/home/help': typeof HomeHelpIndexRoute
   '/home/messages': typeof HomeMessagesIndexRoute
+  '/courses/$courseId/assignments': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
 }
 export interface FileRoutesById {
@@ -89,6 +98,7 @@ export interface FileRoutesById {
   '/home/dashboard/': typeof HomeDashboardIndexRoute
   '/home/help/': typeof HomeHelpIndexRoute
   '/home/messages/': typeof HomeMessagesIndexRoute
+  '/courses/$courseId/assignments/': typeof CoursesCourseIdAssignmentsIndexRoute
   '/courses/$courseId/course-home/': typeof CoursesCourseIdCourseHomeIndexRoute
 }
 export interface FileRouteTypes {
@@ -101,6 +111,7 @@ export interface FileRouteTypes {
     | '/home/dashboard'
     | '/home/help'
     | '/home/messages'
+    | '/courses/$courseId/assignments'
     | '/courses/$courseId/course-home'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -111,6 +122,7 @@ export interface FileRouteTypes {
     | '/home/dashboard'
     | '/home/help'
     | '/home/messages'
+    | '/courses/$courseId/assignments'
     | '/courses/$courseId/course-home'
   id:
     | '__root__'
@@ -121,6 +133,7 @@ export interface FileRouteTypes {
     | '/home/dashboard/'
     | '/home/help/'
     | '/home/messages/'
+    | '/courses/$courseId/assignments/'
     | '/courses/$courseId/course-home/'
   fileRoutesById: FileRoutesById
 }
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesCourseIdCourseHomeIndexRouteImport
       parentRoute: typeof CoursesCourseIdRouteRoute
     }
+    '/courses/$courseId/assignments/': {
+      id: '/courses/$courseId/assignments/'
+      path: '/assignments'
+      fullPath: '/courses/$courseId/assignments'
+      preLoaderRoute: typeof CoursesCourseIdAssignmentsIndexRouteImport
+      parentRoute: typeof CoursesCourseIdRouteRoute
+    }
   }
 }
 
@@ -210,10 +230,12 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 )
 
 interface CoursesCourseIdRouteRouteChildren {
+  CoursesCourseIdAssignmentsIndexRoute: typeof CoursesCourseIdAssignmentsIndexRoute
   CoursesCourseIdCourseHomeIndexRoute: typeof CoursesCourseIdCourseHomeIndexRoute
 }
 
 const CoursesCourseIdRouteRouteChildren: CoursesCourseIdRouteRouteChildren = {
+  CoursesCourseIdAssignmentsIndexRoute: CoursesCourseIdAssignmentsIndexRoute,
   CoursesCourseIdCourseHomeIndexRoute: CoursesCourseIdCourseHomeIndexRoute,
 }
 

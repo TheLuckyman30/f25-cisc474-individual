@@ -24,9 +24,12 @@ function CourseCard({ course }: CourseCardProps) {
       </div>
       <div className="flex w-full justify-center">
         <div className="flex bg-blue-400 hover:scale-105 duration-100 rounded-md text-white gap-2.5 font-bold p-1 cursor-pointer">
-          <div /* href={`/courses/${course.id}/assignments`}*/>
+          <Link
+            to={'/courses/$courseId/assignments'}
+            params={{ courseId: course.id }}
+          >
             Go to Assignments
-          </div>
+          </Link>
           <MoveRight color="white" />
         </div>
       </div>
