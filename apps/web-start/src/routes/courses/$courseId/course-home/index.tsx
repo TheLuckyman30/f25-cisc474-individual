@@ -1,0 +1,29 @@
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
+import { backendFetcher } from '../../../../integrations/fetcher';
+import type { Course } from '../../../../interfaces/course';
+
+export const Route = createFileRoute('/courses/$courseId/course-home/')({
+  component: CourseHome,
+});
+
+function CourseHome() {
+  const { courseId } = Route.useParams();
+  const userCourse = useQuery<Course>({
+    queryKey: [`/courses/${courseId}`],
+    queryFn: backendFetcher(`/courses/${courseId}`),
+  });
+
+  if (userCourse.isFetching) {
+    return <div>Loading...</div>;
+  }
+  if (userCourse.data) {
+    return (
+      <div className="mt-30 ml-30">
+        <div className="font-bold text-3xl">{userCourse.data.name}</div>
+        <div className="text-2xl">Description</div>
+        <div>{userCourse.data.description}</div>
+      </div>
+    );
+  }
+}

@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoursesCourseIdRouteRouteImport } from './routes/courses/$courseId/route'
 import { Route as HomeMessagesIndexRouteImport } from './routes/home/messages/index'
 import { Route as HomeHelpIndexRouteImport } from './routes/home/help/index'
 import { Route as HomeDashboardIndexRouteImport } from './routes/home/dashboard/index'
 import { Route as HomeCalendarIndexRouteImport } from './routes/home/calendar/index'
+import { Route as CoursesCourseIdCourseHomeIndexRouteImport } from './routes/courses/$courseId/course-home/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/home',
@@ -24,6 +26,11 @@ const HomeRouteRoute = HomeRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesCourseIdRouteRoute = CoursesCourseIdRouteRouteImport.update({
+  id: '/courses/$courseId',
+  path: '/courses/$courseId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeMessagesIndexRoute = HomeMessagesIndexRouteImport.update({
@@ -46,62 +53,81 @@ const HomeCalendarIndexRoute = HomeCalendarIndexRouteImport.update({
   path: '/calendar/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const CoursesCourseIdCourseHomeIndexRoute =
+  CoursesCourseIdCourseHomeIndexRouteImport.update({
+    id: '/course-home/',
+    path: '/course-home/',
+    getParentRoute: () => CoursesCourseIdRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
+  '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
   '/home/calendar': typeof HomeCalendarIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
   '/home/help': typeof HomeHelpIndexRoute
   '/home/messages': typeof HomeMessagesIndexRoute
+  '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
+  '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
   '/home/calendar': typeof HomeCalendarIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
   '/home/help': typeof HomeHelpIndexRoute
   '/home/messages': typeof HomeMessagesIndexRoute
+  '/courses/$courseId/course-home': typeof CoursesCourseIdCourseHomeIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
+  '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
   '/home/calendar/': typeof HomeCalendarIndexRoute
   '/home/dashboard/': typeof HomeDashboardIndexRoute
   '/home/help/': typeof HomeHelpIndexRoute
   '/home/messages/': typeof HomeMessagesIndexRoute
+  '/courses/$courseId/course-home/': typeof CoursesCourseIdCourseHomeIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/home'
+    | '/courses/$courseId'
     | '/home/calendar'
     | '/home/dashboard'
     | '/home/help'
     | '/home/messages'
+    | '/courses/$courseId/course-home'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/home'
+    | '/courses/$courseId'
     | '/home/calendar'
     | '/home/dashboard'
     | '/home/help'
     | '/home/messages'
+    | '/courses/$courseId/course-home'
   id:
     | '__root__'
     | '/'
     | '/home'
+    | '/courses/$courseId'
     | '/home/calendar/'
     | '/home/dashboard/'
     | '/home/help/'
     | '/home/messages/'
+    | '/courses/$courseId/course-home/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
+  CoursesCourseIdRouteRoute: typeof CoursesCourseIdRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -118,6 +144,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses/$courseId': {
+      id: '/courses/$courseId'
+      path: '/courses/$courseId'
+      fullPath: '/courses/$courseId'
+      preLoaderRoute: typeof CoursesCourseIdRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home/messages/': {
@@ -148,6 +181,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeCalendarIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/courses/$courseId/course-home/': {
+      id: '/courses/$courseId/course-home/'
+      path: '/course-home'
+      fullPath: '/courses/$courseId/course-home'
+      preLoaderRoute: typeof CoursesCourseIdCourseHomeIndexRouteImport
+      parentRoute: typeof CoursesCourseIdRouteRoute
+    }
   }
 }
 
@@ -169,9 +209,21 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
   HomeRouteRouteChildren,
 )
 
+interface CoursesCourseIdRouteRouteChildren {
+  CoursesCourseIdCourseHomeIndexRoute: typeof CoursesCourseIdCourseHomeIndexRoute
+}
+
+const CoursesCourseIdRouteRouteChildren: CoursesCourseIdRouteRouteChildren = {
+  CoursesCourseIdCourseHomeIndexRoute: CoursesCourseIdCourseHomeIndexRoute,
+}
+
+const CoursesCourseIdRouteRouteWithChildren =
+  CoursesCourseIdRouteRoute._addFileChildren(CoursesCourseIdRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRouteRoute: HomeRouteRouteWithChildren,
+  CoursesCourseIdRouteRoute: CoursesCourseIdRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

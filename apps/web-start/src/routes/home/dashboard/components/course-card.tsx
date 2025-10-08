@@ -1,4 +1,5 @@
 import { MoveRight } from 'lucide-react';
+import { Link } from '@tanstack/react-router';
 import type { Course } from '../../../../interfaces/course';
 
 interface CourseCardProps {
@@ -11,12 +12,13 @@ function CourseCard({ course }: CourseCardProps) {
       <div className="flex flex-col gap-2">
         <div className="flex gap-2 justify-between ">
           <div className="font-bold text-xl">{course.name}</div>
-          <div
-            // href={`/courses/${course.id}/course-home`}
+          <Link
+            to={'/courses/$courseId/course-home'}
+            params={{ courseId: course.id }}
             className="flex h-fit w-fit bg-blue-400 rounded-md p-1 hover:scale-110 duration-100"
           >
             <MoveRight color="white" />
-          </div>
+          </Link>
         </div>
         <div>{course.description}</div>
       </div>
