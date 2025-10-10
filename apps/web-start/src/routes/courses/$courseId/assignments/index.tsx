@@ -25,8 +25,8 @@ function AssignmentsPage() {
   }
 
   return (
-    <div className="mt-30 ml-30">
-      <div className="grid grid-cols-6 gap-20">
+    <div className="flex justify-center items-center pt-28 w-lvw">
+      <div className="flex flex-wrap gap-20">
         {courseAssignments.data.map((assignment, index) => (
           <CourseAssignmentCard
             key={index}

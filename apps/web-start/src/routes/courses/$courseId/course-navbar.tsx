@@ -1,31 +1,35 @@
 import { Link, useParams } from '@tanstack/react-router';
 
+const COURSE_NAV_LINKS = [
+  { name: 'Dashboard', link: '/home/dashboard' },
+  { name: 'Home', link: '/courses/$courseId/course-home' },
+  { name: 'Assignments', link: '/courses/$courseId/assignments' },
+  { name: 'Files', link: '/courses/$courseId/files' },
+  { name: 'Media', link: '/courses/$courseId/media' },
+  { name: 'Grades', link: '/courses/$courseId/grades' },
+];
+
 function CourseNavBar() {
   const { courseId } = useParams({ strict: false });
 
-  const COURSE_NAV_LINKS = [
-    { name: 'Dashboard', link: '/home/dashboard' },
-    { name: 'Home', link: '/courses/$courseId/course-home' },
-    { name: 'Assignments', link: '/courses/$courseId/assignments' },
-    { name: 'Files', link: '/courses/$courseId/files' },
-    { name: 'Media', link: '/courses/$courseId/media' },
-    { name: 'Grades', link: '/courses/$courseId/grades' },
-  ];
-
   return (
-    <div className="flex justify-center">
-      <div className="fixed flex gap-5 p-2 border border-blue-400 font-bold rounded-md">
+    <div className="flex justify-between items-center fixed w-full h-fit p-5 bg-white/80 shadow-md backdrop-blur-md">
+      <div>Site Page</div>
+      <div className="flex items-center gap-15 rounded-md p-3 bg-gray-200/80">
         {COURSE_NAV_LINKS.map((link, index) => (
           <Link
             to={link.link}
             params={{ courseId: courseId }}
+            className={
+              'hover:text-blue-400 duration-75 cursor-pointer [&.active]:text-blue-400'
+            }
             key={index}
-            className={`p-1 hover:-translate-y-1 duration-200 rounded-md [&.active]:bg-blue-300`}
           >
             {link.name}
           </Link>
         ))}
       </div>
+      <div>Some button probably</div>
     </div>
   );
 }
