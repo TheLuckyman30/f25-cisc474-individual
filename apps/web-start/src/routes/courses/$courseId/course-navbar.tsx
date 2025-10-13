@@ -13,7 +13,7 @@ function CourseNavBar() {
   const { courseId } = useParams({ strict: false });
 
   return (
-    <div className="flex justify-between items-center fixed w-full h-fit p-5 bg-white/80 shadow-md backdrop-blur-md">
+    <div className="flex justify-between items-center fixed w-full h-fit p-5 bg-white/80 shadow-md backdrop-blur-md z-1000">
       <div>Site Page</div>
       <div className="flex items-center gap-15 rounded-md p-3 bg-gray-200/80">
         {COURSE_NAV_LINKS.map((link, index) => (
