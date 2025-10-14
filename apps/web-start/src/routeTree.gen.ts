@@ -15,6 +15,7 @@ import { Route as CoursesCourseIdRouteRouteImport } from './routes/courses/$cour
 import { Route as HomeMessagesIndexRouteImport } from './routes/home/messages/index'
 import { Route as HomeHelpIndexRouteImport } from './routes/home/help/index'
 import { Route as HomeDashboardIndexRouteImport } from './routes/home/dashboard/index'
+import { Route as HomeCreationcenterIndexRouteImport } from './routes/home/creationcenter/index'
 import { Route as HomeCalendarIndexRouteImport } from './routes/home/calendar/index'
 import { Route as CoursesCourseIdMediaIndexRouteImport } from './routes/courses/$courseId/media/index'
 import { Route as CoursesCourseIdGradesIndexRouteImport } from './routes/courses/$courseId/grades/index'
@@ -51,6 +52,11 @@ const HomeHelpIndexRoute = HomeHelpIndexRouteImport.update({
 const HomeDashboardIndexRoute = HomeDashboardIndexRouteImport.update({
   id: '/dashboard/',
   path: '/dashboard/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeCreationcenterIndexRoute = HomeCreationcenterIndexRouteImport.update({
+  id: '/creationcenter/',
+  path: '/creationcenter/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeCalendarIndexRoute = HomeCalendarIndexRouteImport.update({
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/home': typeof HomeRouteRouteWithChildren
   '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
   '/home/calendar': typeof HomeCalendarIndexRoute
+  '/home/creationcenter': typeof HomeCreationcenterIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
   '/home/help': typeof HomeHelpIndexRoute
   '/home/messages': typeof HomeMessagesIndexRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/home': typeof HomeRouteRouteWithChildren
   '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
   '/home/calendar': typeof HomeCalendarIndexRoute
+  '/home/creationcenter': typeof HomeCreationcenterIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
   '/home/help': typeof HomeHelpIndexRoute
   '/home/messages': typeof HomeMessagesIndexRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/home': typeof HomeRouteRouteWithChildren
   '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
   '/home/calendar/': typeof HomeCalendarIndexRoute
+  '/home/creationcenter/': typeof HomeCreationcenterIndexRoute
   '/home/dashboard/': typeof HomeDashboardIndexRoute
   '/home/help/': typeof HomeHelpIndexRoute
   '/home/messages/': typeof HomeMessagesIndexRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/courses/$courseId'
     | '/home/calendar'
+    | '/home/creationcenter'
     | '/home/dashboard'
     | '/home/help'
     | '/home/messages'
@@ -163,6 +173,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/courses/$courseId'
     | '/home/calendar'
+    | '/home/creationcenter'
     | '/home/dashboard'
     | '/home/help'
     | '/home/messages'
@@ -178,6 +189,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/courses/$courseId'
     | '/home/calendar/'
+    | '/home/creationcenter/'
     | '/home/dashboard/'
     | '/home/help/'
     | '/home/messages/'
@@ -239,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeDashboardIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/creationcenter/': {
+      id: '/home/creationcenter/'
+      path: '/creationcenter'
+      fullPath: '/home/creationcenter'
+      preLoaderRoute: typeof HomeCreationcenterIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/home/calendar/': {
       id: '/home/calendar/'
       path: '/calendar'
@@ -293,6 +312,7 @@ declare module '@tanstack/react-router' {
 
 interface HomeRouteRouteChildren {
   HomeCalendarIndexRoute: typeof HomeCalendarIndexRoute
+  HomeCreationcenterIndexRoute: typeof HomeCreationcenterIndexRoute
   HomeDashboardIndexRoute: typeof HomeDashboardIndexRoute
   HomeHelpIndexRoute: typeof HomeHelpIndexRoute
   HomeMessagesIndexRoute: typeof HomeMessagesIndexRoute
@@ -300,6 +320,7 @@ interface HomeRouteRouteChildren {
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeCalendarIndexRoute: HomeCalendarIndexRoute,
+  HomeCreationcenterIndexRoute: HomeCreationcenterIndexRoute,
   HomeDashboardIndexRoute: HomeDashboardIndexRoute,
   HomeHelpIndexRoute: HomeHelpIndexRoute,
   HomeMessagesIndexRoute: HomeMessagesIndexRoute,
