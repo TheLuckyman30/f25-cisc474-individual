@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CourseOut } from '@repo/api/courses';
+import { CourseOut, CreateCourse } from '@repo/api/courses';
 import { Prisma } from '@repo/database';
 import { PrismaService } from 'src/prisma.service';
 
@@ -22,5 +22,10 @@ export class CoursesService {
     courseWhereUniqueInput: Prisma.CourseWhereUniqueInput,
   ): Promise<CourseOut | null> {
     return this.prisma.course.findUnique({ where: courseWhereUniqueInput });
+  }
+  
+  async createCourse(createCourseDto: CreateCourse): Promise<CourseOut> {
+    const newCourse = await this.prisma.course.create({data: createCourseDto});
+    return {id: newCourse.id, ownerId: newCourse.ownerId, name: newCourse.name, description: newCourse.description}
   }
 }

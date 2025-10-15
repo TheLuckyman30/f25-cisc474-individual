@@ -7,3 +7,10 @@ export const CourseOut = z.object({
     description: z.string()
 });
 export type CourseOut = z.infer<typeof CourseOut>;
+
+export const CreateCourse = z.object({
+    ownerId: z.uuid(),
+    name: z.string(),
+    description: z.string()
+});
+export type CreateCourse = z.infer<typeof CreateCourse>;
