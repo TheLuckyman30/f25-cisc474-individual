@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Course, Prisma } from '@repo/database';
+import { CourseOut } from '@repo/api/courses';
+import { Prisma } from '@repo/database';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
@@ -12,14 +13,14 @@ export class CoursesService {
     cursor?: Prisma.CourseWhereUniqueInput;
     where?: Prisma.CourseWhereInput;
     orderBy?: Prisma.CourseOrderByWithRelationInput;
-  }): Promise<Course[]> {
+  }): Promise<CourseOut[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.course.findMany({ skip, take, cursor, where, orderBy });
   }
 
   async findCourse(
     courseWhereUniqueInput: Prisma.CourseWhereUniqueInput,
-  ): Promise<Course | null> {
+  ): Promise<CourseOut | null> {
     return this.prisma.course.findUnique({ where: courseWhereUniqueInput });
   }
 }

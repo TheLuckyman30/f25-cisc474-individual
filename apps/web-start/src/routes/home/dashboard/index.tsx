@@ -5,8 +5,8 @@ import { backendFetcher } from '../../../integrations/fetcher';
 import CourseCard from './components/course-card';
 import Dropdown from './components/dropdown';
 import AssignmentCard from './components/assignment-card';
-import type { Course } from '../../../interfaces/course';
 import type { Assignment } from '../../../interfaces/assignment';
+import type { CourseOut } from '@repo/api/courses';
 
 export const Route = createFileRoute('/home/dashboard/')({
   component: Dashboard,
@@ -17,7 +17,7 @@ const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 function Dashboard() {
   const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
 
-  const courses = useQuery<Array<Course>>({
+  const courses = useQuery<Array<CourseOut>>({
     queryKey: ['courses'],
     queryFn: backendFetcher('/courses'),
     initialData: [],

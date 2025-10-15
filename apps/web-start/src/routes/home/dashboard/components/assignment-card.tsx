@@ -1,10 +1,10 @@
 import { MoveRight } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
-import type { Course } from '../../../../interfaces/course';
 import type { Assignment } from '../../../../interfaces/assignment';
+import type { CourseOut } from '@repo/api/courses';
 
 interface AssignmentCardProps {
-  course: Course;
+  course: CourseOut;
   assignment: Assignment;
 }
 
