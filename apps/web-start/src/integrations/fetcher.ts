@@ -5,7 +5,7 @@ export function backendFetcher<T>(endpoint: string): () => Promise<T> {
     );
 }
 
-export async function mutateBackendr<Input, Output>(endpoint: string, method: string, body?: Input): Promise<Output> {
+export async function mutateBackend<Input, Output>(endpoint: string, method: string, body?: Input): Promise<Output> {
   const responseOptions = {
     method: method,
     headers: {
