@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react';
 import CreateCourseButton from './components/create-course';
 import CreateCourseForm from './components/create-form';
 import DeleteCourseButon from './components/delete-course';
+import DeleteCourseForm from './components/delete-form';
 
 export const Route = createFileRoute('/home/creationcenter/')({
   component: CreationCenter,
@@ -16,7 +17,7 @@ function CreationCenter() {
       Button: CreateCourseButton,
       Form: CreateCourseForm,
     },
-    { Button: DeleteCourseButon, Form: CreateCourseForm },
+    { Button: DeleteCourseButon, Form: DeleteCourseForm },
   ];
 
   return (

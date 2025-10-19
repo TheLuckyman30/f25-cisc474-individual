@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { Assignment as AssignmentModel} from '@repo/database';
 import { AssignmentsService } from 'src/assignments/assignments.service';
-import {CourseOut, CreateCourse} from '@repo/api/courses'
+import {CourseOut, CreateCourse, DeleteCourse} from '@repo/api/courses'
 
 @Controller('courses')
 export class CoursesController {
@@ -26,5 +26,10 @@ export class CoursesController {
   @Post()
   async addCourse(@Body() createCourseDto: CreateCourse): Promise<CourseOut> {
     return this.coursesService.createCourse(createCourseDto);
+  }
+
+  @Delete()
+  async removeCourse(@Body() deleteCourseDto: DeleteCourse): Promise<CourseOut> {
+    return this.coursesService.deleteCourse(deleteCourseDto);
   }
 }

@@ -1,4 +1,5 @@
 export {
     CourseOut,
-    CreateCourse
+    CreateCourse,
+    DeleteCourse,
 } from './courses'
