@@ -1,3 +1,4 @@
 export {
-    CourseOut
+    CourseOut,
+    CreateCourse
 } from './courses'
