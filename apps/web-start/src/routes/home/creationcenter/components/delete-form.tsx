@@ -41,29 +41,41 @@ function DeleteCourseForm({ newFormType, setFormType }: DeleteCourseFormProps) {
       >
         <X />
       </span>
-      <form className="flex flex-col select-none">
-        <label className="font-bold">Select a Course to Delete</label>
-        <select
-          onChange={(event) => setSelectedCourseId(event.currentTarget.value)}
-          className="bg-white shadow-md rounded-md w-fit p-2 border border-gray-400 focus:outline-none "
-        >
-          {courses.data.map((course, index) => (
-            <option key={index} value={course.id}>
-              {course.name}
-            </option>
-          ))}
-        </select>
+      <form className="w-full">
+        <div className="flex flex-col gap-6">
+          <div>
+            <label
+              htmlFor="course-delete"
+              className="block mb-2 font-medium text-sm text-gray-900"
+            >
+              Select a Course to Delete
+            </label>
+            <select
+              id="course-delete"
+              onChange={(event) =>
+                setSelectedCourseId(event.currentTarget.value)
+              }
+              className="block border border-gray-300 p-2.5 bg-gray-50 rounded-lg text-sm w-full focus:outline-none"
+            >
+              {courses.data.map((course, index) => (
+                <option key={index} value={course.id}>
+                  {course.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button
+            className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
+            onClick={() => {
+              mutation.mutate({
+                id: selectedCourseId,
+              });
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </form>
-      <button
-        className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
-        onClick={() => {
-          mutation.mutate({
-            id: selectedCourseId,
-          });
-        }}
-      >
-        Delete
-      </button>
     </div>
   );
 }

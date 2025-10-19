@@ -63,7 +63,6 @@ function CreateCourseForm({ newFormType, setFormType }: CreateFormProps) {
               onChange={(e) => setNewCourseDescritption(e.target.value)}
             ></input>
           </div>
-
           <button
             className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
             onClick={() => {
