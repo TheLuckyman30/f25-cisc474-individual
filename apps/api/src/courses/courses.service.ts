@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CourseOut, CreateCourse, DeleteCourse } from '@repo/api/courses';
+import { CourseOut, CreateCourse, DeleteCourse, EditCourse } from '@repo/api/courses';
 import { Prisma } from '@repo/database';
 import { PrismaService } from 'src/prisma.service';
 
@@ -30,6 +30,12 @@ export class CoursesService {
   }
 
   async deleteCourse(deleteCourseDto: DeleteCourse): Promise<CourseOut> {
-    return this.prisma.course.delete({where: deleteCourseDto});
+    const deletedCourse = await this.prisma.course.delete({where: deleteCourseDto});
+    return {id: deletedCourse.id, ownerId: deletedCourse.ownerId, name: deletedCourse.name, description: deletedCourse.description}
+  }
+
+  async updateCourse(editCourseDto: EditCourse): Promise<CourseOut> {
+    const editedCourse = await this.prisma.course.update({data: editCourseDto, where: {id: editCourseDto.id}});
+    return {id: editedCourse.id, ownerId: editedCourse.ownerId, name: editedCourse.name, description: editedCourse.description}
   }
 }

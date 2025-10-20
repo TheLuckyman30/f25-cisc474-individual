@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react';
 import { CircleMinus, CirclePlus, Pencil } from 'lucide-react';
 import CreateCourseForm from './components/create-form';
 import DeleteCourseForm from './components/delete-form';
+import EditCourseForm from './components/edit-form';
 
 export const Route = createFileRoute('/home/creationcenter/')({
   component: CreationCenter,
@@ -18,7 +19,7 @@ function CreationCenter() {
       Icon: CirclePlus,
     },
     { text: 'Delete Course', Form: DeleteCourseForm, Icon: CircleMinus },
-    { text: 'Edit Course', Form: CreateCourseForm, Icon: Pencil },
+    { text: 'Edit Course', Form: EditCourseForm, Icon: Pencil },
   ];
 
   return (

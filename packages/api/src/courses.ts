@@ -19,3 +19,11 @@ export const DeleteCourse = z.object({
     id: z.uuid(),
 });
 export type DeleteCourse = z.infer<typeof DeleteCourse>
+
+export const EditCourse = z.object({
+    id: z.uuid(),
+    ownerId: z.uuid(),
+    name: z.string(),
+    description: z.string()
+})
+export type EditCourse = z.infer<typeof EditCourse>
