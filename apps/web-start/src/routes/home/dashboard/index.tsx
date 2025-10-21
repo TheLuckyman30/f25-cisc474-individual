@@ -60,7 +60,11 @@ function Dashboard() {
           <div className="font-bold">
             For Individual Frontend to Backend Assignment:
           </div>
-          <div>[Put Instructions Here]</div>
+          <div>
+            Click on the Creation Center tab on the navbar. After
+            adding/deleting/editing data, go back to the dashboard to see the
+            changes
+          </div>
         </div>
         <div className="flex flex-wrap gap-2 ">
           {selectedInfo === 'Courses' &&
