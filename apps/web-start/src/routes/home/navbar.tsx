@@ -1,6 +1,12 @@
 import { Link } from '@tanstack/react-router';
 
-const NAV_LINKS: Array<string> = ['Dashboard', 'Calendar', 'Messages', 'Help'];
+const NAV_LINKS: Array<string> = [
+  'Dashboard',
+  'Calendar',
+  'Messages',
+  'Help',
+  'Creation Center',
+];
 
 function NavBar() {
   return (
@@ -8,7 +14,7 @@ function NavBar() {
       <div>Site Page</div>
       <div className="flex items-center gap-15 rounded-md p-3 bg-gray-200/80">
         {NAV_LINKS.map((link, index) => {
-          const newLink = `/home/${link.toLowerCase()}`;
+          const newLink = `/home/${link.toLowerCase().replace(' ', '')}`;
           return (
             <Link
               to={newLink}
