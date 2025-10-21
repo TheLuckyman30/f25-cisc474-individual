@@ -5,8 +5,8 @@ import { backendFetcher } from '../../../integrations/fetcher';
 import CourseCard from './components/course-card';
 import Dropdown from './components/dropdown';
 import AssignmentCard from './components/assignment-card';
-import type { Course } from '../../../interfaces/course';
 import type { Assignment } from '../../../interfaces/assignment';
+import type { CourseOut } from '@repo/api/courses';
 
 export const Route = createFileRoute('/home/dashboard/')({
   component: Dashboard,
@@ -17,7 +17,7 @@ const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 function Dashboard() {
   const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
 
-  const courses = useQuery<Array<Course>>({
+  const courses = useQuery<Array<CourseOut>>({
     queryKey: ['courses'],
     queryFn: backendFetcher('/courses'),
     initialData: [],
@@ -47,9 +47,20 @@ function Dashboard() {
           setSelectedItem={setSelectedInfo}
         />
         <div>
-          You can click on the Go To Assignments button to view all course
-          assignments from the database. From there you can click on one of the
-          assignment names to take you to that assignments individual page.
+          <div className="font-bold">
+            For Connecting Frontend to Backend Assignment:
+          </div>
+          <div>
+            You can click on the Go To Assignments button to view all course
+            assignments from the database. From there you can click on one of
+            the assignment names to take you to that assignments individual
+            page.
+          </div>
+          <br></br>
+          <div className="font-bold">
+            For Individual Frontend to Backend Assignment:
+          </div>
+          <div>[Put Instructions Here]</div>
         </div>
         <div className="flex flex-wrap gap-2 ">
           {selectedInfo === 'Courses' &&

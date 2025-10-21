@@ -1,5 +1,3 @@
-import type { ChangeEvent } from 'react';
-
 interface DropdownProps {
   possibleItems: Array<string>;
   selectedItem: string;
@@ -11,17 +9,12 @@ function Dropdown({
   selectedItem,
   setSelectedItem,
 }: DropdownProps) {
-  function changeInfoShowed(event: ChangeEvent<HTMLSelectElement>) {
-    const newInfo = event.currentTarget.value;
-    setSelectedItem(newInfo);
-  }
-
   return (
     <form className="flex flex-col select-none">
       <label className="font-bold">Select a view</label>
       <select
         defaultValue={selectedItem}
-        onChange={(event) => changeInfoShowed(event)}
+        onChange={(event) => setSelectedItem(event.currentTarget.value)}
         className="bg-white shadow-md rounded-md w-fit p-2 border border-gray-400 focus:outline-none "
       >
         {possibleItems.map((item, index) => (

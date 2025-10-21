@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { backendFetcher } from '../../../../integrations/fetcher';
-import type { Course } from '../../../../interfaces/course';
+import type { CourseOut } from '@repo/api/courses';
 
 export const Route = createFileRoute('/courses/$courseId/course-home/')({
   component: CourseHome,
@@ -9,7 +9,7 @@ export const Route = createFileRoute('/courses/$courseId/course-home/')({
 
 function CourseHome() {
   const { courseId } = Route.useParams();
-  const userCourse = useQuery<Course>({
+  const userCourse = useQuery<CourseOut>({
     queryKey: [`/courses/${courseId}`],
     queryFn: backendFetcher(`/courses/${courseId}`),
   });

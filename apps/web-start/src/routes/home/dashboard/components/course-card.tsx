@@ -1,9 +1,9 @@
 import { MoveRight } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
-import type { Course } from '../../../../interfaces/course';
+import type { CourseOut } from '@repo/api/courses';
 
 interface CourseCardProps {
-  course: Course;
+  course: CourseOut;
 }
 
 function CourseCard({ course }: CourseCardProps) {
