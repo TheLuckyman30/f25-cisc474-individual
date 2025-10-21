@@ -51,7 +51,7 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
       >
         <X />
       </span>
-      <form className="w-full">
+      <form className="w-full" onSubmit={(e) => e.preventDefault()}>
         <div className="flex flex-col gap-6">
           <div>
             <label
@@ -108,19 +108,26 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
               onChange={(e) => setNewCourseDescritption(e.target.value)}
             ></input>
           </div>
-          <button
-            className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
-            onClick={() => {
-              mutation.mutate({
-                id: selectedCourse ? selectedCourse.id : '',
-                ownerId: 'user1',
-                name: newCourseName,
-                description: newCourseDescription,
-              });
-            }}
-          >
-            Update
-          </button>
+          <div className="flex items-center gap-2.5">
+            <button
+              className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
+              onClick={() => {
+                mutation.mutate({
+                  id: selectedCourse ? selectedCourse.id : '',
+                  ownerId: 'user1',
+                  name: newCourseName,
+                  description: newCourseDescription,
+                });
+              }}
+            >
+              Update
+            </button>
+            {mutation.isPending && <div>Loading...</div>}
+            {mutation.isError && (
+              <div>There was an error: {mutation.error.message}</div>
+            )}
+            {mutation.isSuccess && <div>Course Updated!</div>}
+          </div>
         </div>
       </form>
     </div>

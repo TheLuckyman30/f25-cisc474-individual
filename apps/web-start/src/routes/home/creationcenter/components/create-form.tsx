@@ -31,7 +31,7 @@ function CreateCourseForm({ newFormType, setFormType }: CreateFormProps) {
       >
         <X />
       </span>
-      <form className="w-full">
+      <form className="w-full" onSubmit={(event) => event.preventDefault()}>
         <div className="flex flex-col gap-6">
           <div>
             <label
@@ -63,18 +63,25 @@ function CreateCourseForm({ newFormType, setFormType }: CreateFormProps) {
               onChange={(e) => setNewCourseDescritption(e.target.value)}
             ></input>
           </div>
-          <button
-            className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
-            onClick={() => {
-              mutation.mutate({
-                ownerId: 'user1',
-                name: newCourseName,
-                description: newCourseDescription,
-              });
-            }}
-          >
-            Submitt
-          </button>
+          <div className="flex gap-2.5 items-center">
+            <button
+              className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
+              onClick={() => {
+                mutation.mutate({
+                  ownerId: 'user1',
+                  name: newCourseName,
+                  description: newCourseDescription,
+                });
+              }}
+            >
+              Submitt
+            </button>
+            {mutation.isPending && <div>Loading...</div>}
+            {mutation.isError && (
+              <div>There was an error: {mutation.error.message}</div>
+            )}
+            {mutation.isSuccess && <div>Course Added!</div>}
+          </div>
         </div>
       </form>
     </div>

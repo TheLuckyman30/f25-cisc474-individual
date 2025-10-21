@@ -41,7 +41,7 @@ function DeleteCourseForm({ newFormType, setFormType }: DeleteCourseFormProps) {
       >
         <X />
       </span>
-      <form className="w-full">
+      <form className="w-full" onSubmit={(event) => event.preventDefault()}>
         <div className="flex flex-col gap-6">
           <div>
             <label
@@ -64,16 +64,23 @@ function DeleteCourseForm({ newFormType, setFormType }: DeleteCourseFormProps) {
               ))}
             </select>
           </div>
-          <button
-            className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
-            onClick={() => {
-              mutation.mutate({
-                id: selectedCourseId,
-              });
-            }}
-          >
-            Delete
-          </button>
+          <div className="flex gap-2.5 items-center">
+            <button
+              className="bg-blue-400 w-fit text-white font-medium p-2.5 rounded-lg hover:scale-102 duration-75 cursor-pointer"
+              onClick={() => {
+                mutation.mutate({
+                  id: selectedCourseId,
+                });
+              }}
+            >
+              Delete
+            </button>
+            {mutation.isPending && <div>Loading...</div>}
+            {mutation.isError && (
+              <div>There was an error: {mutation.error.message}</div>
+            )}
+            {mutation.isSuccess && <div>Course Deleted!</div>}
+          </div>
         </div>
       </form>
     </div>
