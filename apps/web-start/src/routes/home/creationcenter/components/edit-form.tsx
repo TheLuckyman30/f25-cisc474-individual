@@ -39,6 +39,10 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
     setNewCourseDescritption(course.description);
   }
 
+  if (courses.isFetching) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex flex-col items-center bg-white shadow-md p-5 rounded-lg w-[25%]">
       <span
@@ -59,8 +63,12 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
             <select
               id="course-edit"
               onChange={(event) => handleChange(event)}
+              defaultValue="initial"
               className="block border border-gray-300 p-2.5 bg-gray-50 rounded-lg text-sm w-full focus:outline-none"
             >
+              <option value="initial" hidden disabled>
+                Select an Option
+              </option>
               {courses.data.map((course, index) => (
                 <option key={index} value={JSON.stringify(course)}>
                   {course.name}
