@@ -1,13 +1,17 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { Assignment as AssignmentModel} from '@repo/database';
 import { AssignmentsService } from 'src/assignments/assignments.service';
 import {CourseOut, CreateCourse, DeleteCourse, EditCourse} from '@repo/api/courses'
+import { AuthGuard } from '@nestjs/passport';
+import { CurrentUser } from 'src/auth/current-user.decorator';
+import { JwtUser } from 'src/auth/jwt.strategy';
 
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService, private readonly assignmentsService: AssignmentsService) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   async findAll(): Promise<CourseOut[]> {
     return this.coursesService.findAllCourses({});
@@ -24,7 +28,8 @@ export class CoursesController {
   }
 
   @Post()
-  async addCourse(@Body() createCourseDto: CreateCourse): Promise<CourseOut> {
+  async addCourse(@Body() createCourseDto: CreateCourse, @CurrentUser() user: JwtUser): Promise<CourseOut> {
+    createCourseDto.ownerId = user.userId;
     return this.coursesService.createCourse(createCourseDto);
   }
 
@@ -36,5 +41,5 @@ export class CoursesController {
   @Delete()
   async removeCourse(@Body() deleteCourseDto: DeleteCourse): Promise<CourseOut> {
     return this.coursesService.deleteCourse(deleteCourseDto);
-  }
+  };
 }
