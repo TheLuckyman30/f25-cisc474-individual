@@ -9,6 +9,7 @@ import { AnnoucementsModule } from './announcements/announcements.module';
 import { MessagesModule } from './messages/messages.module';
 import { GradesModule } from './grades/grades.module';
 import { EnrollmentsModule } from './enrollments/enrollment.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { EnrollmentsModule } from './enrollments/enrollment.module';
     MessagesModule,
     GradesModule,
     EnrollmentsModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

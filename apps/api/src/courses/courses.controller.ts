@@ -27,17 +27,20 @@ export class CoursesController {
     return this.assignmentsService.findAllAssignments({where: {courseId: id}})
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Post()
   async addCourse(@Body() createCourseDto: CreateCourse, @CurrentUser() user: JwtUser): Promise<CourseOut> {
     createCourseDto.ownerId = user.userId;
     return this.coursesService.createCourse(createCourseDto);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Put()
   async editCourse(@Body() editCourseDto: EditCourse): Promise<CourseOut> {
     return this.coursesService.updateCourse(editCourseDto);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Delete()
   async removeCourse(@Body() deleteCourseDto: DeleteCourse): Promise<CourseOut> {
     return this.coursesService.deleteCourse(deleteCourseDto);
