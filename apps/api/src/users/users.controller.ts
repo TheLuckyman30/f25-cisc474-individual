@@ -10,7 +10,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @UseGuards(AuthGuard('jwt'))
-  @Get()
+  @Get('/me')
   async getMe(@CurrentUser() auth: JwtUser): Promise<UserOut> {
     if (!auth || !auth.userId) {
       throw new UnauthorizedException()
