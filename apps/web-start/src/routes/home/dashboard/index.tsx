@@ -1,12 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
-import { backendFetcher } from '../../../integrations/fetcher';
+import { useApiQuery } from '../../../integrations/api';
 import CourseCard from './components/course-card';
 import Dropdown from './components/dropdown';
 import AssignmentCard from './components/assignment-card';
-import type { Assignment } from '../../../interfaces/assignment';
 import type { CourseOut } from '@repo/api/courses';
+import type { Assignment } from '../../../interfaces/assignment';
 
 export const Route = createFileRoute('/home/dashboard/')({
   component: Dashboard,
@@ -17,17 +16,23 @@ const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 function Dashboard() {
   const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
 
-  const courses = useQuery<Array<CourseOut>>({
-    queryKey: ['courses'],
-    queryFn: backendFetcher('/courses'),
-    initialData: [],
-  });
+  const courses = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
 
-  const assignments = useQuery<Array<Assignment>>({
-    queryKey: ['assignments'],
-    queryFn: backendFetcher('/assignments'),
-    initialData: [],
-  });
+  const assignments = useApiQuery<Array<Assignment>>(
+    ['assignments'],
+    '/assignments',
+  );
+
+  const courseData = courses.data ?? [];
+  const assignmentData = assignments.data ?? [];
+
+  if (courses.error) {
+    return (
+      <div className="flex justify-center w-lvw min-h-lvh pt-[50vh]">
+        {courses.error.message}
+      </div>
+    );
+  }
 
   if (courses.isFetching || assignments.isFetching) {
     return (
@@ -68,12 +73,12 @@ function Dashboard() {
         </div>
         <div className="flex flex-wrap gap-2 ">
           {selectedInfo === 'Courses' &&
-            courses.data.map((course, index) => (
+            courseData.map((course, index) => (
               <CourseCard course={course} key={index} />
             ))}
           {selectedInfo === 'Assignments' &&
-            assignments.data.map((assingment, index) => {
-              const course = courses.data.find(
+            assignmentData.map((assingment, index) => {
+              const course = courseData.find(
                 (c) => c.id === assingment.courseId,
               );
               if (course) {

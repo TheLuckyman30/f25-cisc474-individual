@@ -3,4 +3,7 @@ export {
     CreateCourse,
     DeleteCourse,
     EditCourse,
-} from './courses'
+} from './courses';
+export {
+    UserOut,
+} from './users'

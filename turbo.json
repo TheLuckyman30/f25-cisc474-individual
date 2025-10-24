@@ -4,8 +4,8 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*", ".env.FRONTEND_URL"],
-      "env": ["FRONTEND_URL"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*", ".env.FRONTEND_URL", ".env.AUTH0_ISSUER_URL", ".env.AUTH0_AUDIENCE"],
+      "env": ["FRONTEND_URL", "AUTH0_ISSUER_URL", "AUTH0_AUDIENCE"],
       "outputs": [
         "build/**",
         ".vercel/**",
