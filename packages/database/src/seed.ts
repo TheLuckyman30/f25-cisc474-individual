@@ -23,7 +23,6 @@ import {
             lastName: user.lastName,
             email: user.email,
             password: user.password,
-            userSchoolId: user.userSchoolId,
           },
         });
       }),

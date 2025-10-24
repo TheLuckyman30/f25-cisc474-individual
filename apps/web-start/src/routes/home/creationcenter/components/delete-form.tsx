@@ -1,10 +1,6 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { X } from 'lucide-react';
-import {
-  backendFetcher,
-  mutateBackend,
-} from '../../../../integrations/fetcher';
+import { useApiMutation, useApiQuery } from '../../../../integrations/api';
 import type { CourseOut, DeleteCourse } from '@repo/api/courses';
 
 interface DeleteCourseFormProps {
@@ -14,24 +10,16 @@ interface DeleteCourseFormProps {
 
 function DeleteCourseForm({ newFormType, setFormType }: DeleteCourseFormProps) {
   const [selectedCourseId, setSelectedCourseId] = useState<string>('');
-  const courses = useQuery<Array<CourseOut>>({
-    queryKey: ['courses'],
-    queryFn: backendFetcher<Array<CourseOut>>('/courses'),
-    initialData: [],
-  });
-  const mutation = useMutation({
-    mutationFn: (courseToDelete: DeleteCourse) => {
-      return mutateBackend<DeleteCourse, CourseOut>(
-        '/courses',
-        'DELETE',
-        courseToDelete,
-      );
-    },
+  const courses = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
+  const mutation = useApiMutation<DeleteCourse, CourseOut>({
+    endpoint: () => ({ path: '/courses', method: 'DELETE' }),
   });
 
   if (courses.isFetching) {
     return <div>Loading...</div>;
   }
+
+  const coursesData = courses.data ?? [];
 
   return (
     <div className="flex flex-col items-center bg-white shadow-md p-5 rounded-lg w-[15%]">
@@ -57,7 +45,7 @@ function DeleteCourseForm({ newFormType, setFormType }: DeleteCourseFormProps) {
               }
               className="block border border-gray-300 p-2.5 bg-gray-50 rounded-lg text-sm w-full focus:outline-none"
             >
-              {courses.data.map((course, index) => (
+              {coursesData.map((course, index) => (
                 <option key={index} value={course.id}>
                   {course.name}
                 </option>
