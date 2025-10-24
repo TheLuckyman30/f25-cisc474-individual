@@ -13,21 +13,17 @@ function HomePage() {
         <div className="font-bold text-2xl md:text-7xl">
           Welcome to my custom LMS
         </div>
-        <div className="text-2xl">
-          Press the Login/Signup button in the top right to get started
-        </div>
+        <button
+          onClick={() =>
+            loginWithRedirect({
+              authorizationParams: { scope: 'read:courses', prompt: 'consent' },
+            })
+          }
+          className="text-3xl bg-blue-400 p-5 text-white rounded-md shadow-md font-bold cursor-pointer hover:scale-102 duration-75"
+        >
+          Login | Signup
+        </button>
       </div>
-
-      <button
-        className="absolute p-1 top-0 right-0 m-5 border rounded-md hover:-translate-y-2 duration-200"
-        onClick={() =>
-          loginWithRedirect({
-            authorizationParams: { scope: 'read:courses', prompt: 'consent' },
-          })
-        }
-      >
-        Login
-      </button>
     </div>
   );
 }

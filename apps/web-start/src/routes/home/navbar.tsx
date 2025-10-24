@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from '@tanstack/react-router';
 
 const NAV_LINKS: Array<string> = [
@@ -9,6 +10,7 @@ const NAV_LINKS: Array<string> = [
 ];
 
 function NavBar() {
+  const { logout } = useAuth0();
   return (
     <div className="flex justify-between items-center fixed w-full h-fit p-5 bg-white/80 shadow-md backdrop-blur-md">
       <div>Site Page</div>
@@ -28,7 +30,14 @@ function NavBar() {
           );
         })}
       </div>
-      <div>Some button probably</div>
+      <button
+        onClick={() =>
+          logout({ logoutParams: { returnTo: window.location.origin } })
+        }
+        className="hover:text-blue-400 duration-75 cursor-pointer"
+      >
+        Logout
+      </button>
     </div>
   );
 }
