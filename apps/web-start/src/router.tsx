@@ -9,7 +9,7 @@ export function getRouter() {
 
   const redirect_uri =
     typeof window !== 'undefined'
-      ? window.location.origin + '/home'
+      ? window.location.origin + '/home/dashboard'
       : undefined;
 
   const router = createRouter({

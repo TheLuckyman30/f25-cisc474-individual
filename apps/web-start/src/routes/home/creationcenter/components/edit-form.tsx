@@ -1,10 +1,6 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { X } from 'lucide-react';
-import {
-  backendFetcher,
-  mutateBackend,
-} from '../../../../integrations/fetcher';
+import { useApiMutation, useApiQuery } from '../../../../integrations/api';
 import type { CourseOut, EditCourse } from '@repo/api/courses';
 
 interface EditCourseFormProps {
@@ -17,19 +13,10 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
   const [newCourseDescription, setNewCourseDescritption] = useState<string>('');
   const [selectedCourse, setSelectedCourse] = useState<CourseOut>();
 
-  const courses = useQuery<Array<CourseOut>>({
-    queryKey: ['courses'],
-    queryFn: backendFetcher<Array<CourseOut>>('/courses'),
-    initialData: [],
-  });
-  const mutation = useMutation({
-    mutationFn: (courseToDelete: EditCourse) => {
-      return mutateBackend<EditCourse, CourseOut>(
-        '/courses',
-        'PUT',
-        courseToDelete,
-      );
-    },
+  const courses = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
+  const coursesData = courses.data ?? [];
+  const mutation = useApiMutation<EditCourse, CourseOut>({
+    endpoint: () => ({ path: '/courses', method: 'PUT' }),
   });
 
   function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -69,7 +56,7 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
               <option value="initial" hidden disabled>
                 Select an Option
               </option>
-              {courses.data.map((course, index) => (
+              {coursesData.map((course, index) => (
                 <option key={index} value={JSON.stringify(course)}>
                   {course.name}
                 </option>

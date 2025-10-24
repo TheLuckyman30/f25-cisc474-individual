@@ -1,7 +1,6 @@
-import { useMutation } from '@tanstack/react-query';
 import { X } from 'lucide-react';
 import { useState } from 'react';
-import { mutateBackend } from '../../../../integrations/fetcher';
+import { useApiMutation } from '../../../../integrations/api';
 import type { CourseOut, CreateCourse } from '@repo/api/courses';
 
 interface CreateFormProps {
@@ -13,14 +12,8 @@ function CreateCourseForm({ newFormType, setFormType }: CreateFormProps) {
   const [newCourseName, setNewCourseName] = useState<string>('');
   const [newCourseDescription, setNewCourseDescritption] = useState<string>('');
 
-  const mutation = useMutation({
-    mutationFn: (newCourse: CreateCourse) => {
-      return mutateBackend<CreateCourse, CourseOut>(
-        '/courses',
-        'POST',
-        newCourse,
-      );
-    },
+  const mutation = useApiMutation<CreateCourse, CourseOut>({
+    endpoint: () => ({ path: '/courses', method: 'POST' }),
   });
 
   return (
