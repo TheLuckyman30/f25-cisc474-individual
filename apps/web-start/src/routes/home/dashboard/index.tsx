@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useApiQuery } from '../../../integrations/api';
 import CourseCard from './components/course-card';
@@ -6,6 +6,7 @@ import Dropdown from './components/dropdown';
 import AssignmentCard from './components/assignment-card';
 import type { CourseOut } from '@repo/api/courses';
 import type { Assignment } from '../../../interfaces/assignment';
+import type { UserOut } from '@repo/api/users';
 
 export const Route = createFileRoute('/home/dashboard/')({
   component: Dashboard,
@@ -14,14 +15,18 @@ export const Route = createFileRoute('/home/dashboard/')({
 const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 
 function Dashboard() {
+  const navigate = useNavigate();
   const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
-
+  const currentUser = useApiQuery<UserOut>(['users', 'me'], '/users/me');
   const courses = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
-
   const assignments = useApiQuery<Array<Assignment>>(
     ['assignments'],
     '/assignments',
   );
+
+  if (currentUser.isFetched && !currentUser.data?.firstName) {
+    navigate({ to: '/create-user' });
+  }
 
   const courseData = courses.data ?? [];
   const assignmentData = assignments.data ?? [];
