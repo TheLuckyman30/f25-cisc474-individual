@@ -15,26 +15,13 @@ const POSSIBLE_ITEMS = ['Courses', 'Assignments'];
 
 function Dashboard() {
   const [selectedInfo, setSelectedInfo] = useState<string>('Courses');
+  const { data: courses = [], isFetching: coursesIsFetching } = useApiQuery<
+    Array<CourseOut>
+  >(['courses'], '/courses');
+  const { data: assignments = [], isFetching: assignmentsIsFethcing } =
+    useApiQuery<Array<Assignment>>(['assignments'], '/assignments');
 
-  const courses = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
-
-  const assignments = useApiQuery<Array<Assignment>>(
-    ['assignments'],
-    '/assignments',
-  );
-
-  const courseData = courses.data ?? [];
-  const assignmentData = assignments.data ?? [];
-
-  if (courses.error) {
-    return (
-      <div className="flex justify-center w-lvw min-h-lvh pt-[50vh]">
-        {courses.error.message}
-      </div>
-    );
-  }
-
-  if (courses.isFetching || assignments.isFetching) {
+  if (coursesIsFetching || assignmentsIsFethcing) {
     return (
       <div className="flex justify-center w-lvw min-h-lvh pt-[50vh]">
         Loading Data...
@@ -73,14 +60,12 @@ function Dashboard() {
         </div>
         <div className="flex flex-wrap gap-2 ">
           {selectedInfo === 'Courses' &&
-            courseData.map((course, index) => (
+            courses.map((course, index) => (
               <CourseCard course={course} key={index} />
             ))}
           {selectedInfo === 'Assignments' &&
-            assignmentData.map((assingment, index) => {
-              const course = courseData.find(
-                (c) => c.id === assingment.courseId,
-              );
+            assignments.map((assingment, index) => {
+              const course = courses.find((c) => c.id === assingment.courseId);
               if (course) {
                 return (
                   <AssignmentCard

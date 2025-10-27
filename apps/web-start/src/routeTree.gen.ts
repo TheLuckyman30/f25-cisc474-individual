@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/home/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CreateUserIndexRouteImport } from './routes/create-user/index'
 import { Route as CoursesCourseIdRouteRouteImport } from './routes/courses/$courseId/route'
 import { Route as HomeMessagesIndexRouteImport } from './routes/home/messages/index'
 import { Route as HomeHelpIndexRouteImport } from './routes/home/help/index'
@@ -32,6 +33,11 @@ const HomeRouteRoute = HomeRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateUserIndexRoute = CreateUserIndexRouteImport.update({
+  id: '/create-user/',
+  path: '/create-user/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesCourseIdRouteRoute = CoursesCourseIdRouteRouteImport.update({
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
   '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
+  '/create-user': typeof CreateUserIndexRoute
   '/home/calendar': typeof HomeCalendarIndexRoute
   '/home/creationcenter': typeof HomeCreationcenterIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
   '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
+  '/create-user': typeof CreateUserIndexRoute
   '/home/calendar': typeof HomeCalendarIndexRoute
   '/home/creationcenter': typeof HomeCreationcenterIndexRoute
   '/home/dashboard': typeof HomeDashboardIndexRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/home': typeof HomeRouteRouteWithChildren
   '/courses/$courseId': typeof CoursesCourseIdRouteRouteWithChildren
+  '/create-user/': typeof CreateUserIndexRoute
   '/home/calendar/': typeof HomeCalendarIndexRoute
   '/home/creationcenter/': typeof HomeCreationcenterIndexRoute
   '/home/dashboard/': typeof HomeDashboardIndexRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/courses/$courseId'
+    | '/create-user'
     | '/home/calendar'
     | '/home/creationcenter'
     | '/home/dashboard'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/courses/$courseId'
+    | '/create-user'
     | '/home/calendar'
     | '/home/creationcenter'
     | '/home/dashboard'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/courses/$courseId'
+    | '/create-user/'
     | '/home/calendar/'
     | '/home/creationcenter/'
     | '/home/dashboard/'
@@ -205,6 +217,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
   CoursesCourseIdRouteRoute: typeof CoursesCourseIdRouteRouteWithChildren
+  CreateUserIndexRoute: typeof CreateUserIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create-user/': {
+      id: '/create-user/'
+      path: '/create-user'
+      fullPath: '/create-user'
+      preLoaderRoute: typeof CreateUserIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/courses/$courseId': {
@@ -356,6 +376,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRouteRoute: HomeRouteRouteWithChildren,
   CoursesCourseIdRouteRoute: CoursesCourseIdRouteRouteWithChildren,
+  CreateUserIndexRoute: CreateUserIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

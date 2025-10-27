@@ -6,4 +6,5 @@ export {
 } from './courses';
 export {
     UserOut,
+    EditUser,
 } from './users'

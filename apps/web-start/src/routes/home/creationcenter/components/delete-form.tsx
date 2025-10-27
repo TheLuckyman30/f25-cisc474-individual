@@ -10,16 +10,18 @@ interface DeleteCourseFormProps {
 
 function DeleteCourseForm({ newFormType, setFormType }: DeleteCourseFormProps) {
   const [selectedCourseId, setSelectedCourseId] = useState<string>('');
-  const courses = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
+
+  const { data: courses = [], isFetching } = useApiQuery<Array<CourseOut>>(
+    ['courses'],
+    '/courses',
+  );
   const mutation = useApiMutation<DeleteCourse, CourseOut>({
     endpoint: () => ({ path: '/courses', method: 'DELETE' }),
   });
 
-  if (courses.isFetching) {
+  if (isFetching) {
     return <div>Loading...</div>;
   }
-
-  const coursesData = courses.data ?? [];
 
   return (
     <div className="flex flex-col items-center bg-white shadow-md p-5 rounded-lg w-[15%]">
@@ -45,7 +47,7 @@ function DeleteCourseForm({ newFormType, setFormType }: DeleteCourseFormProps) {
               }
               className="block border border-gray-300 p-2.5 bg-gray-50 rounded-lg text-sm w-full focus:outline-none"
             >
-              {coursesData.map((course, index) => (
+              {courses.map((course, index) => (
                 <option key={index} value={course.id}>
                   {course.name}
                 </option>
