@@ -13,8 +13,10 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
   const [newCourseDescription, setNewCourseDescritption] = useState<string>('');
   const [selectedCourse, setSelectedCourse] = useState<CourseOut>();
 
-  const courses = useApiQuery<Array<CourseOut>>(['courses'], '/courses');
-  const coursesData = courses.data ?? [];
+  const { data: courses = [], isFetching } = useApiQuery<Array<CourseOut>>(
+    ['courses'],
+    '/courses',
+  );
   const mutation = useApiMutation<EditCourse, CourseOut>({
     endpoint: () => ({ path: '/courses', method: 'PUT' }),
   });
@@ -26,7 +28,7 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
     setNewCourseDescritption(course.description);
   }
 
-  if (courses.isFetching) {
+  if (isFetching) {
     return <div>Loading...</div>;
   }
 
@@ -56,7 +58,7 @@ function EditCourseForm({ newFormType, setFormType }: EditCourseFormProps) {
               <option value="initial" hidden disabled>
                 Select an Option
               </option>
-              {coursesData.map((course, index) => (
+              {courses.map((course, index) => (
                 <option key={index} value={JSON.stringify(course)}>
                   {course.name}
                 </option>

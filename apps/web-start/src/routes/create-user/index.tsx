@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useApiMutation, useApiQuery } from '../../integrations/api';
 import type { EditUser, UserOut } from '@repo/api/users';
@@ -10,7 +10,6 @@ export const Route = createFileRoute('/create-user/')({
 
 function CreateUser() {
   const { user } = useAuth0();
-  const navigate = useNavigate();
   const currentUser = useApiQuery<UserOut>(['user', 'me'], '/users/me');
   const mutation = useApiMutation<EditUser, UserOut>({
     endpoint: () => ({ path: '/users', method: 'PUT' }),
@@ -18,10 +17,6 @@ function CreateUser() {
   const [newEmail, setNewEmail] = useState<string>(user?.email ?? '');
   const [newFirstName, setNewFirstName] = useState<string>('');
   const [newLastName, setNewLastName] = useState<string>('');
-
-  if (mutation.isSuccess) {
-    navigate({ to: '/home/dashboard' });
-  }
 
   return (
     <div className="flex justify-center items-center h-lvh w-lvw">
