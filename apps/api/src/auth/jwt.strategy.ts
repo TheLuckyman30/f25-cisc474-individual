@@ -12,6 +12,7 @@ type JwtPayload = {
   iss: string;
   aud: string | string[];
   scope?: string;
+  permissions?: string[]
 };
 
 export interface JwtUser {
@@ -20,6 +21,7 @@ export interface JwtUser {
   providerId: string;
   sub: string;
   scopes: string[];
+  permissions: string[];
 }
 
 function splitSub(sub: string) {
@@ -86,6 +88,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       providerId,
       sub,
       scopes: (payload.scope ?? '').split(' ').filter(Boolean),
+      permissions: payload.permissions ?? []
     } as JwtUser;
   }
 }

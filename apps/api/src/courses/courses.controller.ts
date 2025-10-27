@@ -6,6 +6,7 @@ import {CourseOut, CreateCourse, DeleteCourse, EditCourse} from '@repo/api/cours
 import { AuthGuard } from '@nestjs/passport';
 import { CurrentUser } from 'src/auth/current-user.decorator';
 import { JwtUser } from 'src/auth/jwt.strategy';
+import { PermissionsGuard } from 'src/auth/permissions.guard';
 
 @Controller('courses')
 export class CoursesController {
@@ -17,6 +18,7 @@ export class CoursesController {
     return this.coursesService.findAllCourses({});
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   async findCourseById(@Param('id') id: string): Promise<CourseOut> {
     return this.coursesService.findCourse({ id: id });
@@ -27,7 +29,7 @@ export class CoursesController {
     return this.assignmentsService.findAllAssignments({where: {courseId: id}})
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'), PermissionsGuard)
   @Post()
   async addCourse(@Body() createCourseDto: CreateCourse, @CurrentUser() user: JwtUser): Promise<CourseOut> {
     createCourseDto.ownerId = user.userId;
