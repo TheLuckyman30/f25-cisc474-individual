@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, SetMetadata, UseGuards } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { Assignment as AssignmentModel} from '@repo/database';
 import { AssignmentsService } from 'src/assignments/assignments.service';
@@ -30,6 +30,7 @@ export class CoursesController {
   }
 
   @UseGuards(AuthGuard('jwt'), PermissionsGuard)
+  @SetMetadata('permissions', ['create:courses'])
   @Post()
   async addCourse(@Body() createCourseDto: CreateCourse, @CurrentUser() user: JwtUser): Promise<CourseOut> {
     createCourseDto.ownerId = user.userId;

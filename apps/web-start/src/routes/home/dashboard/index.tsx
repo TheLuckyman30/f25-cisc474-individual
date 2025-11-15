@@ -38,26 +38,6 @@ function Dashboard() {
           selectedItem={selectedInfo}
           setSelectedItem={setSelectedInfo}
         />
-        <div>
-          <div className="font-bold">
-            For Connecting Frontend to Backend Assignment:
-          </div>
-          <div>
-            You can click on the Go To Assignments button to view all course
-            assignments from the database. From there you can click on one of
-            the assignment names to take you to that assignments individual
-            page.
-          </div>
-          <br></br>
-          <div className="font-bold">
-            For Individual Frontend to Backend Assignment:
-          </div>
-          <div>
-            Click on the Creation Center tab on the navbar. After
-            adding/deleting/editing data, go back to the dashboard to see the
-            changes
-          </div>
-        </div>
         <div className="flex flex-wrap gap-2 ">
           {selectedInfo === 'Courses' &&
             courses.map((course, index) => (
